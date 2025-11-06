@@ -1,0 +1,106 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-11-05 15:55:57.243937",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "customer",
+  "subscription_type",
+  "route",
+  "subscription_billing_type",
+  "active",
+  "status",
+  "child_table",
+  "subscription_pause",
+  "discount_type",
+  "discount_amountpercentage"
+ ],
+ "fields": [
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "subscription_type",
+   "fieldtype": "Select",
+   "label": "Subscription Type",
+   "options": "Daily\nWeekly\nMonthly\nAlternate Days"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Link",
+   "label": "Route",
+   "options": "AMD Delivery Route"
+  },
+  {
+   "fieldname": "subscription_billing_type",
+   "fieldtype": "Select",
+   "label": "Subscription Billing Type",
+   "options": "Daily\nWeekly\nMonthly"
+  },
+  {
+   "default": "0",
+   "fieldname": "active",
+   "fieldtype": "Check",
+   "label": "active"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Active\nHalt\nCancelled"
+  },
+  {
+   "fieldname": "child_table",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "AMD Subscription Item"
+  },
+  {
+   "fieldname": "subscription_pause",
+   "fieldtype": "Table",
+   "label": "Subscription Pause",
+   "options": "AMD Subscription Pause"
+  },
+  {
+   "fieldname": "discount_type",
+   "fieldtype": "Select",
+   "label": "Discount Type",
+   "options": "\nAdditional Discount Percentage\nAdditional Discount Amount (INR)"
+  },
+  {
+   "fieldname": "discount_amountpercentage",
+   "fieldtype": "Data",
+   "label": "Discount Amount/Percentage"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-11-06 12:13:28.219265",
+ "modified_by": "Administrator",
+ "module": "AMD Dairy Management",
+ "name": "AMD Customer Subscription",
+ "owner": "jaypatel51895@gmail.com",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
