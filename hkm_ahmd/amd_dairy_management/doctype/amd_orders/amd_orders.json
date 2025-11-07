@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "ORD.-.YYYY.-.MM.-.####",
  "creation": "2025-11-05 15:49:17.939949",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -90,10 +91,11 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-11-06 12:33:49.907156",
- "modified_by": "Administrator",
+ "modified": "2025-11-07 11:24:36.821724",
+ "modified_by": "yashsmk003@gmail.com",
  "module": "AMD Dairy Management",
  "name": "AMD Orders",
+ "naming_rule": "Expression (old style)",
  "owner": "jaypatel51895@gmail.com",
  "permissions": [
   {
@@ -105,6 +107,18 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Dairy Manager",
    "share": 1,
    "write": 1
   }

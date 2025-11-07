@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "FB.-.####",
  "creation": "2025-11-05 15:43:01.520264",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -37,10 +38,11 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-11-06 12:13:41.623783",
- "modified_by": "Administrator",
+ "modified": "2025-11-07 11:29:10.126818",
+ "modified_by": "yashsmk003@gmail.com",
  "module": "AMD Dairy Management",
  "name": "AMD Feedback",
+ "naming_rule": "Expression (old style)",
  "owner": "jaypatel51895@gmail.com",
  "permissions": [
   {

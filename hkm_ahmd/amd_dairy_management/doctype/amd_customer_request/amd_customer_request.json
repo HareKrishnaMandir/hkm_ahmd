@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "CUST.-.YYYY.-.MM.-.####",
  "creation": "2025-11-05 15:45:00.637357",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -42,10 +43,11 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-11-06 12:13:48.625600",
- "modified_by": "Administrator",
+ "modified": "2025-11-07 11:32:00.885071",
+ "modified_by": "yashsmk003@gmail.com",
  "module": "AMD Dairy Management",
  "name": "AMD Customer Request",
+ "naming_rule": "Expression (old style)",
  "owner": "jaypatel51895@gmail.com",
  "permissions": [
   {
