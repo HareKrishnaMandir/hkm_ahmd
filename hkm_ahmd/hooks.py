@@ -4,7 +4,16 @@ app_publisher = "Hare Krishna Movement Ahmedabad"
 app_description = "Dairy and Hotel Management"
 app_email = "developer@harekrishnamandir.org"
 app_license = "mit"
-
+scheduler_events = {
+    "cron": {
+        "0 17 * * *": [
+            "hkm_ahmd.amd_dairy_management.api.create_orders.generate_daily_orders"
+        ],
+        "0 8 * * *": [
+            "hkm_ahmd.amd_dairy_management.events.invoice.generate_subscription_invoices"
+        ],
+    }
+}
 # Apps
 # ------------------
 
