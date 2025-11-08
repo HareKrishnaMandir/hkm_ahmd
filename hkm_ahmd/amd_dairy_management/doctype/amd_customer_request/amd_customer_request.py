@@ -47,6 +47,8 @@ class AMDCustomerRequest(Document):
                         "doctype": "Customer",
                         "customer_name": self.full_name,
                         "customer_type": "Individual",
+                        "customer_group": "Dairy Customers",
+                        "territory": "India",
                         "custom_user": self.email,
                         "custom_mobile_number": self.mobile_number,
                         "custom_address": self.address,
