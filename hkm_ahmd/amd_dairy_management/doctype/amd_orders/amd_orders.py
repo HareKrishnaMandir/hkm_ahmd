@@ -59,6 +59,8 @@ class AMDOrders(Document):
         inv.customer = self.customer
         inv.posting_date = nowdate()
         inv.due_date = nowdate()
+        inv.company = "Golden Lotus Foundation"
+        inv.cost_head = "Dairy"
         inv.set_posting_time = 1
         inv.order_reference = self.name  # your custom field to prevent duplicates
 

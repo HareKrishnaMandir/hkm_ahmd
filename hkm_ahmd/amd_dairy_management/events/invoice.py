@@ -91,6 +91,8 @@ def _create_invoice(customer, item_qty, period_from, period_to, label):
     inv.posting_date     = nowdate()
     inv.due_date         = nowdate()
     inv.set_posting_time = 1
+    inv.company          = "Golden Lotus Foundation"
+    inv.cost_head        = "Dairy"
 
     # Optional custom fields if they exist
     if hasattr(inv, "billing_period_from"):
