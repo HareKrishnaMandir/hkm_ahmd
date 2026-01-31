@@ -1,0 +1,156 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "DA.-.MM.-.YY.-.###",
+ "creation": "2026-01-29 10:55:18.965377",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "vehicle_number",
+  "driver_name",
+  "date",
+  "in_time",
+  "out_time",
+  "duration",
+  "attendance_status",
+  "ot",
+  "shift",
+  "out_side_driver",
+  "other_vehicle",
+  "in_date",
+  "in_km",
+  "out_km",
+  "total_km"
+ ],
+ "fields": [
+  {
+   "fieldname": "vehicle_number",
+   "fieldtype": "Link",
+   "label": "Vehicle ID",
+   "options": "AMD Vehicle Details"
+  },
+  {
+   "fieldname": "driver_name",
+   "fieldtype": "Link",
+   "label": "Driver Name",
+   "options": "AMD Drivers Details"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Check-In Date"
+  },
+  {
+   "fieldname": "in_time",
+   "fieldtype": "Datetime",
+   "label": "In Time"
+  },
+  {
+   "fieldname": "out_time",
+   "fieldtype": "Datetime",
+   "label": "Out Time"
+  },
+  {
+   "fieldname": "duration",
+   "fieldtype": "Duration",
+   "label": "Duration"
+  },
+  {
+   "fieldname": "attendance_status",
+   "fieldtype": "Select",
+   "label": "Attendance Status",
+   "options": "Check-In\nCheck-Out"
+  },
+  {
+   "fieldname": "ot",
+   "fieldtype": "Float",
+   "label": "OT"
+  },
+  {
+   "fieldname": "shift",
+   "fieldtype": "Select",
+   "label": "Shift",
+   "options": "Full Shift\nHalf Shift\nShort Shift"
+  },
+  {
+   "fieldname": "out_side_driver",
+   "fieldtype": "Data",
+   "label": "Other Driver"
+  },
+  {
+   "fieldname": "other_vehicle",
+   "fieldtype": "Data",
+   "label": "Other Vehicle"
+  },
+  {
+   "fieldname": "in_date",
+   "fieldtype": "Data",
+   "label": "Check-Out Date"
+  },
+  {
+   "fieldname": "in_km",
+   "fieldtype": "Int",
+   "label": "In KM"
+  },
+  {
+   "fieldname": "out_km",
+   "fieldtype": "Int",
+   "label": "Out KM"
+  },
+  {
+   "fieldname": "total_km",
+   "fieldtype": "Int",
+   "label": "Total KM"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-01-30 17:15:16.309001",
+ "modified_by": "yashsmk003@gmail.com",
+ "module": "AMD Vehicle Management",
+ "name": "AMD Driver Attendance",
+ "naming_rule": "Expression",
+ "owner": "yashsmk003@gmail.com",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Vehicle Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Vehicle User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,149 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "VA.-.DD.-.MM.-.YY.-.####",
+ "creation": "2026-01-29 10:53:46.426889",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "requestor",
+  "other_requestor",
+  "other_requestor_name",
+  "date",
+  "out_time",
+  "in_time",
+  "vehicle_number",
+  "model",
+  "driver_name",
+  "mobile_number",
+  "other_driver_name",
+  "other_mobile_number",
+  "status",
+  "remarks",
+  "request_id"
+ ],
+ "fields": [
+  {
+   "fieldname": "requestor",
+   "fieldtype": "Link",
+   "label": "Requestor",
+   "options": "AMD Vehicle Requestor"
+  },
+  {
+   "depends_on": "eval:doc.requestor==\"Other\";",
+   "fieldname": "other_requestor",
+   "fieldtype": "Data",
+   "label": "Other Requestor Mobile Number",
+   "mandatory_depends_on": "eval:doc.requestor==\"Other\";"
+  },
+  {
+   "fieldname": "other_requestor_name",
+   "fieldtype": "Data",
+   "label": "Other Requestor Name"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "out_time",
+   "fieldtype": "Time",
+   "label": "Out Time"
+  },
+  {
+   "fieldname": "in_time",
+   "fieldtype": "Time",
+   "label": "In Time"
+  },
+  {
+   "fieldname": "vehicle_number",
+   "fieldtype": "Link",
+   "label": "Vehicle Number",
+   "options": "AMD Vehicle Details"
+  },
+  {
+   "fieldname": "model",
+   "fieldtype": "Data",
+   "label": "Model"
+  },
+  {
+   "fieldname": "driver_name",
+   "fieldtype": "Link",
+   "label": "Driver Name",
+   "options": "AMD Drivers Details"
+  },
+  {
+   "fetch_from": "driver_name.mobile_number",
+   "fieldname": "mobile_number",
+   "fieldtype": "Data",
+   "label": "Mobile Number"
+  },
+  {
+   "fieldname": "other_driver_name",
+   "fieldtype": "Data",
+   "label": "Other Driver Name"
+  },
+  {
+   "fieldname": "other_mobile_number",
+   "fieldtype": "Data",
+   "label": "Other Mobile Number"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Approved\nCancelled"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "request_id",
+   "fieldtype": "Data",
+   "label": "Vehicle Request ID"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-01-30 17:09:23.180579",
+ "modified_by": "yashsmk003@gmail.com",
+ "module": "AMD Vehicle Management",
+ "name": "AMD Vehicle Assignment",
+ "naming_rule": "Expression",
+ "owner": "yashsmk003@gmail.com",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Vehicle Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

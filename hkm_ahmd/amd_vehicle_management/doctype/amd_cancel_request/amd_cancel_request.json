@@ -1,0 +1,78 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "VCR-.###",
+ "creation": "2026-01-29 10:54:17.596663",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "requestor",
+  "disable",
+  "disable_from",
+  "disable_to"
+ ],
+ "fields": [
+  {
+   "fieldname": "requestor",
+   "fieldtype": "Link",
+   "label": "Requestor",
+   "options": "AMD Vehicle Requestor"
+  },
+  {
+   "default": "0",
+   "fieldname": "disable",
+   "fieldtype": "Check",
+   "label": "Disable"
+  },
+  {
+   "fieldname": "disable_from",
+   "fieldtype": "Data",
+   "label": "Disable From"
+  },
+  {
+   "fieldname": "disable_to",
+   "fieldtype": "Date",
+   "label": "Disable To"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-01-30 17:11:32.609650",
+ "modified_by": "yashsmk003@gmail.com",
+ "module": "AMD Vehicle Management",
+ "name": "AMD Cancel Request",
+ "naming_rule": "Expression",
+ "owner": "yashsmk003@gmail.com",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Vehicle Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

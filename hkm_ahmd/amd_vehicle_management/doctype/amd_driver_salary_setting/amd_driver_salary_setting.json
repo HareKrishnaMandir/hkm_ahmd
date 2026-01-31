@@ -1,0 +1,136 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-01-29 10:46:12.168911",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "petrol_rate",
+  "fuel_rate",
+  "diesel_rate",
+  "extra_rate_per_hour",
+  "rate_per_km",
+  "full_shift_auto_rent_amount",
+  "half_shift_auto_rent_amount",
+  "short_shift_auto_rent_amount",
+  "rent_amount",
+  "full_shift_rent",
+  "half_shift_rent",
+  "short_shift_rent",
+  "oil_rate_per_10k_km"
+ ],
+ "fields": [
+  {
+   "fieldname": "petrol_rate",
+   "fieldtype": "Float",
+   "label": "Petrol Rate",
+   "reqd": 1
+  },
+  {
+   "fieldname": "fuel_rate",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "CNG Rate",
+   "reqd": 1
+  },
+  {
+   "fieldname": "diesel_rate",
+   "fieldtype": "Float",
+   "label": "Diesel Rate",
+   "reqd": 1
+  },
+  {
+   "fieldname": "extra_rate_per_hour",
+   "fieldtype": "Float",
+   "label": "Extra Rate per Hour",
+   "reqd": 1
+  },
+  {
+   "fieldname": "rate_per_km",
+   "fieldtype": "Table",
+   "label": "Rate per Km",
+   "options": "AMD Model Wise Rate",
+   "reqd": 1
+  },
+  {
+   "fieldname": "full_shift_auto_rent_amount",
+   "fieldtype": "Currency",
+   "label": "Full Shift Auto Rent Amount"
+  },
+  {
+   "fieldname": "half_shift_auto_rent_amount",
+   "fieldtype": "Currency",
+   "label": "Half Shift Auto Rent Amount"
+  },
+  {
+   "fieldname": "short_shift_auto_rent_amount",
+   "fieldtype": "Currency",
+   "label": "Short Shift Auto Rent Amount"
+  },
+  {
+   "fieldname": "rent_amount",
+   "fieldtype": "Int",
+   "label": "Rent Amount"
+  },
+  {
+   "fieldname": "full_shift_rent",
+   "fieldtype": "Currency",
+   "label": "Full Shift Rent",
+   "reqd": 1
+  },
+  {
+   "fieldname": "half_shift_rent",
+   "fieldtype": "Currency",
+   "label": "Half Shift Rent",
+   "reqd": 1
+  },
+  {
+   "fieldname": "short_shift_rent",
+   "fieldtype": "Currency",
+   "label": "Short Shift Rent",
+   "reqd": 1
+  },
+  {
+   "fieldname": "oil_rate_per_10k_km",
+   "fieldtype": "Float",
+   "label": "Oil Rate per 10,000 KM",
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-01-30 17:09:31.597752",
+ "modified_by": "yashsmk003@gmail.com",
+ "module": "AMD Vehicle Management",
+ "name": "AMD Driver Salary Setting",
+ "owner": "yashsmk003@gmail.com",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Vehicle Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

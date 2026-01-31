@@ -1,0 +1,72 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "VBA.-.MM.-.YY.-.##",
+ "creation": "2026-01-29 10:54:49.176718",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "alloted_vehicle",
+  "alloted_vehicle_for_regular_requestor"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "alloted_vehicle",
+   "fieldtype": "Table",
+   "label": "Alloted Vehicle for Irregular Requestor",
+   "options": "AMD Vehicle Assignment Table"
+  },
+  {
+   "fieldname": "alloted_vehicle_for_regular_requestor",
+   "fieldtype": "Table",
+   "label": "Alloted Vehicle for Regular Requestor",
+   "options": "AMD Vehicle Assignment Table"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-01-30 17:08:58.197068",
+ "modified_by": "yashsmk003@gmail.com",
+ "module": "AMD Vehicle Management",
+ "name": "AMD Vehicle Bulk Assignment",
+ "naming_rule": "Expression",
+ "owner": "yashsmk003@gmail.com",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Vehicle Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

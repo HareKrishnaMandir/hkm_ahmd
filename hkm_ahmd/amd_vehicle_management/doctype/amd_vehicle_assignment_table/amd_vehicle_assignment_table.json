@@ -1,0 +1,113 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-01-29 10:44:36.268116",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "requestor",
+  "out_time",
+  "in_time",
+  "vehicle_number",
+  "model",
+  "driver_name",
+  "mobile_number",
+  "other_driver_name",
+  "other_mobile_number",
+  "date",
+  "remarks",
+  "vehicle_request_id"
+ ],
+ "fields": [
+  {
+   "fieldname": "requestor",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Requestor",
+   "options": "AMD Vehicle Requestor"
+  },
+  {
+   "fieldname": "out_time",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Out Time"
+  },
+  {
+   "fieldname": "in_time",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "In Time"
+  },
+  {
+   "fieldname": "vehicle_number",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Vehicle Number",
+   "options": "AMD Vehicle Details"
+  },
+  {
+   "fieldname": "model",
+   "fieldtype": "Data",
+   "label": "Model"
+  },
+  {
+   "fieldname": "driver_name",
+   "fieldtype": "Link",
+   "label": "Driver Name",
+   "options": "AMD Drivers Details"
+  },
+  {
+   "fieldname": "mobile_number",
+   "fieldtype": "Data",
+   "label": "Mobile Number"
+  },
+  {
+   "depends_on": "eval:doc.driver_name === \"Other\"",
+   "fieldname": "other_driver_name",
+   "fieldtype": "Data",
+   "label": "Other Driver Name"
+  },
+  {
+   "depends_on": "eval:doc.driver_name === \"Other\"",
+   "fieldname": "other_mobile_number",
+   "fieldtype": "Data",
+   "label": "Other Mobile Number"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "vehicle_request_id",
+   "fieldtype": "Link",
+   "label": "Vehicle Reqeust ID",
+   "options": "AMD Vehicle Request"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-01-30 14:38:18.825033",
+ "modified_by": "yashsmk003@gmail.com",
+ "module": "AMD Vehicle Management",
+ "name": "AMD Vehicle Assignment Table",
+ "owner": "yashsmk003@gmail.com",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

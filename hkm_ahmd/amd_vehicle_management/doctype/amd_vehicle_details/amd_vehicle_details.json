@@ -1,0 +1,157 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:license_plate_number",
+ "creation": "2026-01-29 10:55:41.683187",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "license_plate_number",
+  "driver_name",
+  "model",
+  "availability_status",
+  "vehicle_status",
+  "enabled",
+  "status",
+  "odometer_reading",
+  "fuel_type",
+  "vehicle_type",
+  "total_trips",
+  "owner_name"
+ ],
+ "fields": [
+  {
+   "fieldname": "license_plate_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "License Plate Number",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "driver_name",
+   "fieldtype": "Link",
+   "label": "Driver Name",
+   "options": "AMD Drivers Details"
+  },
+  {
+   "fieldname": "model",
+   "fieldtype": "Data",
+   "label": "Model"
+  },
+  {
+   "fieldname": "availability_status",
+   "fieldtype": "Select",
+   "label": "Availability Status",
+   "options": "Available\nUnavailable"
+  },
+  {
+   "fieldname": "vehicle_status",
+   "fieldtype": "Select",
+   "label": "Vehicle Status",
+   "options": "Available\nAssigned"
+  },
+  {
+   "default": "0",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "In\nOut"
+  },
+  {
+   "fieldname": "odometer_reading",
+   "fieldtype": "Int",
+   "label": "Odometer Reading"
+  },
+  {
+   "fieldname": "fuel_type",
+   "fieldtype": "Select",
+   "label": " Fuel Type",
+   "options": "Petrol\nCNG\nDiesel"
+  },
+  {
+   "fieldname": "vehicle_type",
+   "fieldtype": "Select",
+   "label": "Vehicle Type",
+   "options": "Internal\nExternal"
+  },
+  {
+   "fieldname": "total_trips",
+   "fieldtype": "Data",
+   "label": "Total Trips"
+  },
+  {
+   "fieldname": "owner_name",
+   "fieldtype": "Data",
+   "label": "Owner Name"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "link_doctype": "AMD Driver Attendance",
+   "link_fieldname": "vehicle_number"
+  },
+  {
+   "link_doctype": "AMD Vehicle In-Out Log",
+   "link_fieldname": "vehicle_id"
+  },
+  {
+   "link_doctype": "AMD Vehicle Assignment",
+   "link_fieldname": "vehicle_number"
+  }
+ ],
+ "modified": "2026-01-30 17:41:24.440494",
+ "modified_by": "yashsmk003@gmail.com",
+ "module": "AMD Vehicle Management",
+ "name": "AMD Vehicle Details",
+ "naming_rule": "By fieldname",
+ "owner": "yashsmk003@gmail.com",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Vehicle Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Vehicle User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

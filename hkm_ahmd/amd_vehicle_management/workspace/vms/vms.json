@@ -1,0 +1,125 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"AFQ-MdysnZ\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">VMS</span>\",\"col\":12}},{\"id\":\"yar1cTViwZ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Vehicle Request\",\"col\":3}},{\"id\":\"P1T6UyLRXI\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Vehicle Assignment\",\"col\":3}},{\"id\":\"6_uQSczXXz\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Amd Driver Salary Setting\",\"col\":3}},{\"id\":\"EphSpw7oGi\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Vehicle Details\",\"col\":3}},{\"id\":\"CfNjE9mgXP\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Vehicle Bulk Assignment\",\"col\":3}},{\"id\":\"KLHzimAYzf\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Driver Payroll\",\"col\":3}},{\"id\":\"0wr6jpHVJi\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Driver Attendance\",\"col\":3}},{\"id\":\"_SkE0XLuq4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"In-Out Logs\",\"col\":3}},{\"id\":\"g2CZdgLiUX\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Cancel Request\",\"col\":3}},{\"id\":\"JmcT86gWnZ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Driver Details\",\"col\":3}},{\"id\":\"RHdN-96T1v\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Driver Salary Slip\",\"col\":3}},{\"id\":\"r9J3DC12TI\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Vehicle Requestor\",\"col\":3}}]",
+ "creation": "2026-01-30 16:35:32.050968",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "share-people",
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "VMS",
+ "links": [],
+ "modified": "2026-01-30 16:55:16.062425",
+ "modified_by": "yashsmk003@gmail.com",
+ "module": "AMD Vehicle Management",
+ "name": "VMS",
+ "number_cards": [],
+ "owner": "yashsmk003@gmail.com",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 1.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Driver Salary Slip",
+   "link_to": "AMD Driver Salary Slip",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Driver Details",
+   "link_to": "AMD Drivers Details",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Cancel Request",
+   "link_to": "AMD Cancel Request",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "In-Out Logs",
+   "link_to": "AMD Vehicle In-Out Log",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Vehicle Details",
+   "link_to": "AMD Vehicle Details",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Amd Driver Salary Setting",
+   "link_to": "AMD Driver Salary Setting",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Vehicle Assignment",
+   "link_to": "AMD Vehicle Assignment",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Vehicle Request",
+   "link_to": "AMD Vehicle Request",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Vehicle Requestor",
+   "link_to": "AMD Vehicle Requestor",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Vehicle Bulk Assignment",
+   "link_to": "AMD Vehicle Bulk Assignment",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Driver Payroll",
+   "link_to": "AMD Driver Payroll",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Driver Attendance",
+   "link_to": "AMD Driver Attendance",
+   "stats_filter": "[]",
+   "type": "DocType"
+  }
+ ],
+ "title": "VMS"
+}
