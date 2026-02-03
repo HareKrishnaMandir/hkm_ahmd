@@ -11,7 +11,7 @@ class AMDDriverSalarySlip(Document):
     def before_save(self):
         if self.driver_name and self.from_date and self.to_date:
             self.total_rent_days = frappe.call(
-                "hkm_amd.api.amd_driver_salary.calculate_total_rent_days",
+                "hkm_ahmd.api.amd_driver_salary.calculate_total_rent_days",
                 driver_name=self.driver_name,
                 from_date=self.from_date,
                 to_date=self.to_date

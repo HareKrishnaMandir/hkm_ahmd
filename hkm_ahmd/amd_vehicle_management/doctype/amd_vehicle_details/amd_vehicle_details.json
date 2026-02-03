@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "field:license_plate_number",
  "creation": "2026-01-29 10:55:41.683187",
@@ -107,7 +108,7 @@
    "link_fieldname": "vehicle_number"
   }
  ],
- "modified": "2026-01-30 17:41:24.440494",
+ "modified": "2026-02-02 17:11:50.950751",
  "modified_by": "yashsmk003@gmail.com",
  "module": "AMD Vehicle Management",
  "name": "AMD Vehicle Details",
@@ -119,6 +120,7 @@
    "delete": 1,
    "email": 1,
    "export": 1,
+   "import": 1,
    "print": 1,
    "read": 1,
    "report": 1,

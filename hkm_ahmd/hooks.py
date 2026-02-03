@@ -5,12 +5,23 @@ app_description = "Dairy and Hotel Management"
 app_email = "developer@harekrishnamandir.org"
 app_license = "mit"
 scheduler_events = {
+    "daily":[
+        "hkm_ahmd.amd_vehicle_management.doctype.amd_vehicle_requestor.amd_vehicle_requestor.reset_disabled_requestors",
+        "hkm_ahmd.amd_vehicle_management.doctype.amd_vehicle_in_out_log.amd_vehicle_in_out_log.reset_vehicle_trip"
+    ],
+    "hourly": [
+        "hkm_ahmd.amd_vehicle_management.doctype.amd_vehicle_assignment.amd_vehicle_assignment.check_vehicle_status_and_notify",
+    ],
     "cron": {
         "0 17 * * *": [
             "hkm_ahmd.amd_dairy_management.api.create_orders.generate_daily_orders"
         ],
         "0 8 * * *": [
             "hkm_ahmd.amd_dairy_management.events.invoice.generate_subscription_invoices"
+        ],
+        "*/5 * * * *": [
+            "hkm_ahmd.amd_vehicle_management.doctype.amd_vehicle_assignment.amd_vehicle_assignment.update_vehicle_status",
+            "hkm_ahmd.tasks.vehicle_availability.update_vehicle_availability_status",
         ],
     }
 }

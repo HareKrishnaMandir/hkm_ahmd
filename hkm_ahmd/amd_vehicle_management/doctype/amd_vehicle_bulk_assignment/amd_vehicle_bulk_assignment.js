@@ -10,7 +10,7 @@ frappe.ui.form.on('AMD Vehicle Bulk Assignment', {
     date: function(frm) {
         if (frm.doc.date) {
             frappe.call({
-                method: 'hkm_amd.amd_vehicle_management.doctype.amd_vehicle_bulk_assignment.amd_vehicle_bulk_assignment.get_preacher_assignments_by_date',
+                method: 'hkm_ahmd.amd_vehicle_management.doctype.amd_vehicle_bulk_assignment.amd_vehicle_bulk_assignment.get_preacher_assignments_by_date',
                 args: {
                     date: frm.doc.date
                 },
@@ -61,7 +61,7 @@ frappe.ui.form.on('AMD Vehicle Bulk Assignment', {
     refresh: function(frm) {
         frm.add_custom_button('Create Vehicle Assignments', function() {
             frappe.call({
-                method: 'hkm_amd.amd_vehicle_management.doctype.amd_vehicle_bulk_assignment.amd_vehicle_bulk_assignment.create_vehicle_assignments',
+                method: 'hkm_ahmd.amd_vehicle_management.doctype.amd_vehicle_bulk_assignment.amd_vehicle_bulk_assignment.create_vehicle_assignments',
                 args: {
                     bulk_assignment_name: frm.doc.name
                 },

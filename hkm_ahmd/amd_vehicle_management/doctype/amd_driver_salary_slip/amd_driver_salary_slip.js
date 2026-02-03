@@ -22,7 +22,7 @@ frappe.ui.form.on("AMD Driver Salary Slip", {
 function fetch_number_summary(frm) {
     if (frm.doc.vehicle_number && frm.doc.from_date && frm.doc.to_date) {
         frappe.call({
-            method: "hkm_amd.api.amd_driver_salary.get_number_summary",
+            method: "hkm_ahmd.api.amd_driver_salary.get_number_summary",
             args: {
                 vehicle_number: frm.doc.vehicle_number,
                 from_date: frm.doc.from_date,

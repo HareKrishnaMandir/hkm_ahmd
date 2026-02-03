@@ -11,7 +11,7 @@ frappe.ui.form.on('AMD Driver Payroll', {
         if (!frm.is_new()) {
             frm.add_custom_button(__('Generate Salary Slips'), function() {
                 frappe.call({
-                    method: 'hkm_amd.amd_vehicle_management.doctype.amd_driver_payroll.amd_driver_payroll.generate_salary_slips',
+                    method: 'hkm_ahmd.amd_vehicle_management.doctype.amd_driver_payroll.amd_driver_payroll.generate_salary_slips',
                     args: {
                         name: frm.doc.name
                     },

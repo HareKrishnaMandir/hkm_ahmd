@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "VCL.-.MM.-.YY.-.###",
  "creation": "2026-01-29 10:57:10.056292",
@@ -72,7 +73,7 @@
    "in_filter": 1,
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Driver Namev",
+   "label": "Driver Name",
    "options": "AMD Drivers Details"
   },
   {
@@ -137,7 +138,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-01-30 17:41:57.006242",
+ "modified": "2026-02-03 14:35:07.027719",
  "modified_by": "yashsmk003@gmail.com",
  "module": "AMD Vehicle Management",
  "name": "AMD Vehicle In-Out Log",

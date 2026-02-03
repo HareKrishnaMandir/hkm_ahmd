@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "field:driver_name",
  "creation": "2026-01-29 10:49:33.528775",
@@ -118,7 +119,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-01-30 17:12:56.438747",
+ "modified": "2026-02-02 17:13:31.120731",
  "modified_by": "yashsmk003@gmail.com",
  "module": "AMD Vehicle Management",
  "name": "AMD Drivers Details",

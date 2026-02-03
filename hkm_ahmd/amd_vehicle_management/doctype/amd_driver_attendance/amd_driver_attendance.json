@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "DA.-.MM.-.YY.-.###",
  "creation": "2026-01-29 10:55:18.965377",
@@ -84,7 +85,7 @@
   },
   {
    "fieldname": "in_date",
-   "fieldtype": "Data",
+   "fieldtype": "Date",
    "label": "Check-Out Date"
   },
   {
@@ -106,8 +107,8 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-01-30 17:15:16.309001",
- "modified_by": "yashsmk003@gmail.com",
+ "modified": "2026-02-03 14:25:50.025299",
+ "modified_by": "jaypatel51895@gmail.com",
  "module": "AMD Vehicle Management",
  "name": "AMD Driver Attendance",
  "naming_rule": "Expression",

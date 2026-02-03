@@ -44,13 +44,13 @@
   },
   {
    "fieldname": "from_date",
-   "fieldtype": "Data",
+   "fieldtype": "Date",
    "label": "From Date",
    "reqd": 1
   },
   {
    "fieldname": "to_date",
-   "fieldtype": "Data",
+   "fieldtype": "Date",
    "label": "To Date",
    "reqd": 1
   },
@@ -108,8 +108,8 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-01-30 17:42:33.561201",
- "modified_by": "yashsmk003@gmail.com",
+ "modified": "2026-02-03 14:34:43.130994",
+ "modified_by": "jaypatel51895@gmail.com",
  "module": "AMD Vehicle Management",
  "name": "AMD Driver Salary Slip",
  "naming_rule": "Expression",

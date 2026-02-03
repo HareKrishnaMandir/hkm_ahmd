@@ -375,7 +375,7 @@ def cancel_assignment_and_send_message(docname):
         frappe.db.commit()
 
         # Call existing message method
-        frappe.call("hkm_amd.amd_vehicle_management.doctype.amd_vehicle_assignment.amd_vehicle_assignment.send_driver_cancel_message", docname=docname)
+        frappe.call("hkm_ahmd.amd_vehicle_management.doctype.amd_vehicle_assignment.amd_vehicle_assignment.send_driver_cancel_message", docname=docname)
 
         return f"Assignment '{docname}' marked as Cancelled and WhatsApp message sent."
 

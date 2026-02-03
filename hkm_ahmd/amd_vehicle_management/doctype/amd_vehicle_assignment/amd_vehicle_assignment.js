@@ -6,7 +6,7 @@ frappe.ui.form.on("AMD Vehicle Assignment", {
         if (frm.doc.status === "Approved" && !frm.doc.__islocal) {
             frm.add_custom_button("Cancel",() => {
                 frappe.call({
-                    method: "hkm_amd.amd_vehicle_management.doctype.amd_vehicle_assignment.amd_vehicle_assignment.send_driver_cancel_message",
+                    method: "hkm_ahmd.amd_vehicle_management.doctype.amd_vehicle_assignment.amd_vehicle_assignment.send_driver_cancel_message",
                     args: {
                         docname:frm.doc.name
                     },
@@ -27,7 +27,7 @@ frappe.ui.form.on("AMD Vehicle Assignment", {
     after_save(frm) {
         if (frm.doc.status === "Approved") {
             frappe.call({
-                method: "hkm_amd.amd_vehicle_management.doctype.amd_vehicle_assignment.amd_vehicle_assignment.send_whatsapp_message",
+                method: "hkm_ahmd.amd_vehicle_management.doctype.amd_vehicle_assignment.amd_vehicle_assignment.send_whatsapp_message",
                 args: {
                     docname: frm.doc.name
                 },
