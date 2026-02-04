@@ -10,19 +10,19 @@ def delete_my_account(customer_id: str):
     if not customer_id:
         frappe.throw(_("Customer ID is required"))
 
-    # 🔐 Fetch Customer
+    #  Fetch Customer
     if not frappe.db.exists("Customer", customer_id):
         frappe.throw(_("Customer not found"))
 
     customer = frappe.get_doc("Customer", customer_id)
 
-    # 🔐 Get linked user email
+    #  Get linked user email
     user_email = customer.email_id
 
-    # ✅ Delete Customer
+    #  Delete Customer
     frappe.delete_doc("Customer", customer_id, force=1)
 
-    # ✅ Delete linked User (if exists)
+    #  Delete linked User (if exists)
     if user_email and frappe.db.exists("User", user_email):
         frappe.delete_doc("User", user_email, force=1)
 
