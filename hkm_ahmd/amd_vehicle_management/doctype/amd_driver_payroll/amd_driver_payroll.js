@@ -6,6 +6,7 @@
 
 // 	},
 // });
+// Button to generate salary slips for the driver payroll
 frappe.ui.form.on('AMD Driver Payroll', {
     refresh: function(frm) {
         if (!frm.is_new()) {

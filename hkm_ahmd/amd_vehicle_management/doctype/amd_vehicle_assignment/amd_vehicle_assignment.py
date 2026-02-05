@@ -43,6 +43,8 @@ def after_insert(self):
             if current_status != "Allocated":
                 frappe.db.set_value("AMD Vehicle Request", self.request_id, "status", "Allocated")
                 frappe.msgprint(f"Vehicle Request {self.request_id} marked as Allocated.")
+
+# This function checks for overlapping vehicle assignments for the same driver or vehicle on the same date. It throws an error if any overlaps are found, ensuring that a driver or vehicle cannot be double-booked.
 @frappe.whitelist()
 def update_vehicle_status():
 	now = now_datetime()
@@ -148,6 +150,7 @@ def time_overlap(start1, end1, start2, end2):
         start1 <= end2 and end1 >= start2
         if all([start1, end1, start2, end2]) else False
     )
+#for sending whatsapp message to driver and requestor vehicle and driver details on approval of vehicle assignment.
 @frappe.whitelist()
 def send_whatsapp_message(docname):
     if not docname:
@@ -252,7 +255,7 @@ def send_whatsapp_message(docname):
         frappe.log_error(frappe.get_traceback(),"Whatsapp send failed.")
         frappe.msgprint(f"{docname}:{str(e)}")
         return {"status": "error", "message": str(e)}
-	
+# This function is called when a vehicle assignment is cancelled. It updates the assignment status to "Cancelled", sets the vehicle status to "Available", and sends a WhatsApp message to both the driver and requestor notifying them of the cancellation.
 @frappe.whitelist(allow_guest=True)
 def send_driver_cancel_message(docname):
     try:
@@ -358,7 +361,7 @@ def send_driver_cancel_message(docname):
         frappe.log_error(frappe.get_traceback(), "whatsapp send failed.")
         frappe.msgprint(f"{docname}:{str(e)}")
         return {"status": "error","message": str(e)}
-	
+# This function cancels a vehicle assignment by updating its status to "Cancelled" and setting the associated vehicle's status to "Available". It also sends a WhatsApp message to both the driver and requestor notifying them of the cancellation.
 @frappe.whitelist(allow_guest=True)
 def cancel_assignment_and_send_message(docname):
     try:

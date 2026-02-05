@@ -6,7 +6,8 @@ from frappe.model.document import Document
 from frappe.utils import get_datetime
 from hkm_ahmd.api.amd_driver_salary import get_number_summary
 
-
+# This class represents the AMD Driver Salary Slip document. It calculates the total rent days before saving and validates the required fields before saving the document. 
+# It also fetches the number summary based on the vehicle number and date range to populate the salary details.
 class AMDDriverSalarySlip(Document):
     def before_save(self):
         if self.driver_name and self.from_date and self.to_date:

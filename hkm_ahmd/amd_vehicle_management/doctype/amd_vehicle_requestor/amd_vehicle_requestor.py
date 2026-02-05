@@ -7,7 +7,7 @@ from frappe.model.document import Document
 
 class AMDVehicleRequestor(Document):
     pass
-
+#  function to reset disabled requestors
 def reset_disabled_requestors():
     today = getdate(nowdate())
 

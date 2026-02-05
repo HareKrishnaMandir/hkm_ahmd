@@ -10,6 +10,7 @@ class AMDVehicleInOutLog(Document):
     # def after_insert(self):
     #     if self.status == "Out":
     #         update_count(self)
+    #calculate total km
     def validate(self):
         if self.in_km and self.out_km:
             try:

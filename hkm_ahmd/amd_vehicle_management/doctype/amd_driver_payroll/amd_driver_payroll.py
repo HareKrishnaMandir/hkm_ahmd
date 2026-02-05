@@ -30,6 +30,7 @@ class AMDDriverPayroll(Document):
 
 
 @frappe.whitelist()
+# Function to generate salary slips for all drivers in the payroll
 def generate_salary_slips(name):
     doc = frappe.get_doc("AMD Driver Payroll", name)
 

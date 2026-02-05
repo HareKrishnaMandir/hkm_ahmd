@@ -18,7 +18,7 @@ frappe.ui.form.on("AMD Driver Salary Slip", {
     },
     
 });
-
+// Function to fetch number summary based on vehicle number and date range
 function fetch_number_summary(frm) {
     if (frm.doc.vehicle_number && frm.doc.from_date && frm.doc.to_date) {
         frappe.call({

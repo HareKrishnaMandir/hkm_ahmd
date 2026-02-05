@@ -6,6 +6,7 @@
 
 // 	},
 // });
+// vehile bulk assignment 
 frappe.ui.form.on('AMD Vehicle Bulk Assignment', {
     date: function(frm) {
         if (frm.doc.date) {

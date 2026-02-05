@@ -1,6 +1,7 @@
 // Copyright (c) 2025, HKM Ahmedabad and contributors
 // For license information, please see license.txt
 
+// For cancellation of driver assignment and sending whatsapp message to driver and requestor on approval of vehicle assignment
 frappe.ui.form.on("AMD Vehicle Assignment", {
 	refresh(frm) {
         if (frm.doc.status === "Approved" && !frm.doc.__islocal) {

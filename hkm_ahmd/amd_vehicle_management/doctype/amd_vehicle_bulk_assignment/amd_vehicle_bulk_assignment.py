@@ -9,7 +9,7 @@ from hkm_ahmd.amd_vehicle_management.doctype.amd_vehicle_assignment.amd_vehicle_
 
 class AMDVehicleBulkAssignment(Document):
 	pass
-
+# prepare data for both regular and irregular requestors based on selected date
 @frappe.whitelist()
 def get_preacher_assignments_by_date(date):
     regular_assignments = []
@@ -53,7 +53,7 @@ def get_preacher_assignments_by_date(date):
         "regular": regular_assignments,
         "irregular": irregular_assignments
     }
-
+# Fetch vehicle details based on requestor and date, and determine if it's a regular or irregular request
 def fetch_vehicle_details(requestor, date):
     requestor_data = frappe.get_value(
         "AMD Vehicle Requestor",
@@ -114,7 +114,7 @@ def fetch_vehicle_details(requestor, date):
         "in_time": None,
     }
 
-
+# Create AMD Vehicle Assignment records for all entries in the bulk assignment and send WhatsApp messages, then clear the child tables
 @frappe.whitelist()
 def create_vehicle_assignments(bulk_assignment_name):
     doc = frappe.get_doc("AMD Vehicle Bulk Assignment", bulk_assignment_name)
