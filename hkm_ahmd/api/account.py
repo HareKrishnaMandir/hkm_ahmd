@@ -3,33 +3,36 @@ from frappe import _
 
 @frappe.whitelist()
 def delete_my_account(customer_id: str):
-    """
-    Delete account using customer_id (called via API key auth)
-    """
-
     if not customer_id:
         frappe.throw(_("Customer ID is required"))
 
-    #  Fetch Customer
     if not frappe.db.exists("Customer", customer_id):
         frappe.throw(_("Customer not found"))
 
     customer = frappe.get_doc("Customer", customer_id)
 
-    #  Get linked user email
+    # 1) Clear only the 5 fields
+    customer.custom_delivery_route = None
+    customer.custom_fixed_billing_status = None
+    customer.custom_user = None
+    customer.custom_address = None
+    customer.custom_mobile_number = None
+    customer.save(ignore_permissions=True)
+
+    #  2) Disable the linked User (do NOT delete)
     user_email = customer.email_id
-
-    #  Delete Customer
-    frappe.delete_doc("Customer", customer_id, force=1)
-
-    #  Delete linked User (if exists)
     if user_email and frappe.db.exists("User", user_email):
-        frappe.delete_doc("User", user_email, force=1)
+        user = frappe.get_doc("User", user_email)
+        user.enabled = 0
+        user.save(ignore_permissions=True)
+
+        # 3) Logout / invalidate session tokens
+        frappe.db.sql("DELETE FROM `tabSessions` WHERE user=%s", user_email)
+        frappe.db.sql("DELETE FROM `tabOAuth Bearer Token` WHERE user=%s", user_email)
 
     frappe.db.commit()
 
     return {
         "status": "success",
-        "message": "Account deleted successfully"
+        "message": "Account deleted (data cleared + user disabled)"
     }
-
