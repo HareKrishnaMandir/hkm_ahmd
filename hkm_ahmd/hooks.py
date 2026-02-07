@@ -17,6 +17,7 @@ scheduler_events = {
             "hkm_ahmd.amd_dairy_management.api.create_orders.generate_daily_orders"
         ],
         "0 8 * * *": [
+            "hkm_ahmd.tasks.attendance_check.send_unchecked_out_vehicle_alert",
             "hkm_ahmd.amd_dairy_management.events.invoice.generate_subscription_invoices"
         ],
         "*/5 * * * *": [
