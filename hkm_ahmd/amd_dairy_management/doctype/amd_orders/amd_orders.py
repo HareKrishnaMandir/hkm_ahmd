@@ -33,7 +33,7 @@ class AMDOrders(Document):
         # Prevent duplicate active invoice for this order
         existing_invoice = frappe.db.get_value(
             "Sales Invoice",
-            {"order_reference": self.name, "docstatus": ["!=", 2]},
+            {"custom_order_reference": self.name, "docstatus": ["!=", 2]},
             "name",
         )
         if existing_invoice:
@@ -92,7 +92,7 @@ class AMDOrders(Document):
         inv.due_date = nowdate()
         inv.company = company
         inv.set_posting_time = 1
-        inv.order_reference = self.name
+        inv.custom_order_reference = self.name
 
         if cost_head and hasattr(inv, "cost_head"):
             inv.cost_head = cost_head
@@ -124,7 +124,7 @@ class AMDOrders(Document):
     def cancel_sales_invoice_if_allowed(self):
         sales_invoice_name = frappe.db.get_value(
             "Sales Invoice",
-            {"order_reference": self.name, "docstatus": 1},
+            {"custom_order_reference": self.name, "docstatus": 1},
             "name",
         )
 
@@ -133,7 +133,7 @@ class AMDOrders(Document):
                 f"[CANCEL-SKIP] No submitted Sales Invoice found for order {self.name}"
             )
             return
-
+ 
         inv = frappe.get_doc("Sales Invoice", sales_invoice_name)
 
         created_on = get_datetime(inv.creation)
@@ -152,11 +152,11 @@ class AMDOrders(Document):
         frappe.logger().info(
             f"❌ Sales Invoice {inv.name} cancelled because order {self.name} marked Not Delivered within 24 hours."
         )
-
+ 
 
 def _customer_has_billing_type_ci(customer: str, billing_type: str) -> bool:
     rows = frappe.db.sql(
-        """
+        """ 
         SELECT name
         FROM `tabAMD Customer Subscription`
         WHERE customer=%s AND active=1 AND status='Active'
