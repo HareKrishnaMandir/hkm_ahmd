@@ -68,7 +68,7 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Order Status",
-   "options": "In Progress\nDelivered\nCancelled"
+   "options": "In Progress\nDelivered\nCancelled\nNot Delivered"
   },
   {
    "fieldname": "order_source",
@@ -91,11 +91,11 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-11-07 11:24:36.821724",
+ "modified": "2026-03-28 13:55:52.513373",
  "modified_by": "yashsmk003@gmail.com",
  "module": "AMD Dairy Management",
  "name": "AMD Orders",
- "naming_rule": "Expression (old style)",
+ "naming_rule": "Expression",
  "owner": "jaypatel51895@gmail.com",
  "permissions": [
   {
