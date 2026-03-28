@@ -1,0 +1,84 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-03-23 14:51:44.267197",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "type",
+  "ftm_devotee_name",
+  "guest_name",
+  "room_number",
+  "bed_no",
+  "cupboard_no",
+  "clothline_number"
+ ],
+ "fields": [
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "Regular\nGuest"
+  },
+  {
+   "fieldname": "ftm_devotee_name",
+   "fieldtype": "Link",
+   "label": "FTM Devotee Name",
+   "options": "AMD FTM Devotee"
+  },
+  {
+   "fieldname": "guest_name",
+   "fieldtype": "Data",
+   "label": "Guest Name"
+  },
+  {
+   "fieldname": "room_number",
+   "fieldtype": "Data",
+   "label": "Room Number"
+  },
+  {
+   "fieldname": "bed_no",
+   "fieldtype": "Data",
+   "label": "Bed No."
+  },
+  {
+   "fieldname": "cupboard_no",
+   "fieldtype": "Link",
+   "label": "Cupboard No.",
+   "options": "AMD FTM Devotee Cupboards"
+  },
+  {
+   "fieldname": "clothline_number",
+   "fieldtype": "Link",
+   "label": "Cloth Line No.",
+   "options": "AMD FTM Devotee Cloth Line"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-03-28 11:32:55.363890",
+ "modified_by": "Administrator",
+ "module": "AMD Bash",
+ "name": "AMD FTM Devotee Beds",
+ "owner": "yashsmk003@gmail.com",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

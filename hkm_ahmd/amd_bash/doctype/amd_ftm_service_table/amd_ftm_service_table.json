@@ -1,0 +1,63 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-03-23 10:26:01.579330",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "service",
+  "description",
+  "reporting_to",
+  "allocated_on",
+  "released_on"
+ ],
+ "fields": [
+  {
+   "fieldname": "service",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Service"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Description"
+  },
+  {
+   "fieldname": "reporting_to",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Reporting To",
+   "options": "AMD FTM Devotee"
+  },
+  {
+   "fieldname": "allocated_on",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Allocated On"
+  },
+  {
+   "fieldname": "released_on",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Released On"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-03-28 11:37:40.066314",
+ "modified_by": "Administrator",
+ "module": "AMD Bash",
+ "name": "AMD FTM Service Table",
+ "owner": "yashsmk003@gmail.com",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

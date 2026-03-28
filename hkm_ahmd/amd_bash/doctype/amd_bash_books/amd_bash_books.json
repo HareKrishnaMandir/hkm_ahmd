@@ -1,0 +1,117 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:code",
+ "creation": "2026-03-21 13:36:56.227020",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "author",
+  "code",
+  "alpha",
+  "part",
+  "column_break_vzkt",
+  "status",
+  "set1",
+  "shelf",
+  "assessment",
+  "language"
+ ],
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title"
+  },
+  {
+   "fieldname": "author",
+   "fieldtype": "Select",
+   "label": "Author",
+   "options": "Srila Prabhupada\nsirla Prabhupada\nSatsvarup das Goswami\nHari Sauri\nSiddhant Das\nGiriraj Swami\nMulaprakriti DD\nBhakti Vikas Swami\nHayagriva Das\nBhakti Charu Swami\nBrahmananda Das\nBhurijana Das\nMukunda Goswami\nLokanath Swami\nMahanidhi Swami\nJoshua M. Greene\nGurudas\nSrutakirti Das\nBalimardan Das\nTamal Krishna Goswami\nSesh Das\nShyamsunder Das\nRajashekhar Dasa\nHindol Sengupta\nDinatarini DD\nGour Govind Swami\nVrindavan Das\nNaani DD\nVrindavan das\nPuranjana Dasa\nRupa Vilasa Dasa\nNaimisaranya Das\nLochana Dasa Thakura\nPurna Prajna Das\nKrishna Dharma\nSarvabhavana Das\nDipankar Deb\nRashmi Bansal"
+  },
+  {
+   "fieldname": "code",
+   "fieldtype": "Data",
+   "label": "CODE",
+   "unique": 1
+  },
+  {
+   "fieldname": "alpha",
+   "fieldtype": "Data",
+   "label": "Alpha"
+  },
+  {
+   "fieldname": "part",
+   "fieldtype": "Int",
+   "label": "Part"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Issued\nAvailable"
+  },
+  {
+   "fieldname": "set1",
+   "fieldtype": "Select",
+   "label": "Set",
+   "options": "Set 1\nSet 2\nSet 3\nSet 4\nSet 5\nSet 6\nEXTRA"
+  },
+  {
+   "fieldname": "shelf",
+   "fieldtype": "Select",
+   "label": "Shelf",
+   "options": "A\nB\nC\nD\nE\nF\nG\nH\nI\nJ\nK\nL\nM\nN\nO\nP\nQ\nR\nS\nT\nU\nV\nW\nX\nY\nZ"
+  },
+  {
+   "fieldname": "assessment",
+   "fieldtype": "Select",
+   "label": "Assessment",
+   "options": "Missing\nResolved"
+  },
+  {
+   "fieldname": "language",
+   "fieldtype": "Select",
+   "label": "Language",
+   "options": "English\nHindi\nGujarati\nBengali\nOther"
+  },
+  {
+   "fieldname": "column_break_vzkt",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "link_doctype": "AMD Bash Books Transaction",
+   "link_fieldname": "books"
+  }
+ ],
+ "modified": "2026-03-21 13:50:08.318825",
+ "modified_by": "yashsmk003@gmail.com",
+ "module": "AMD Bash",
+ "name": "AMD Bash Books",
+ "naming_rule": "By fieldname",
+ "owner": "yashsmk003@gmail.com",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

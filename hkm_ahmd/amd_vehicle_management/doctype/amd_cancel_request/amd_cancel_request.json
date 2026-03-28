@@ -26,7 +26,7 @@
   },
   {
    "fieldname": "disable_from",
-   "fieldtype": "Data",
+   "fieldtype": "Date",
    "label": "Disable From"
   },
   {
@@ -38,8 +38,8 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-01-30 17:11:32.609650",
- "modified_by": "yashsmk003@gmail.com",
+ "modified": "2026-02-09 14:12:21.702326",
+ "modified_by": "Administrator",
  "module": "AMD Vehicle Management",
  "name": "AMD Cancel Request",
  "naming_rule": "Expression",

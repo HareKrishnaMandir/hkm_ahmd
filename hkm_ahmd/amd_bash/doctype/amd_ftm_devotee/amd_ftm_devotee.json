@@ -1,0 +1,911 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:initiated_name",
+ "creation": "2026-03-21 14:53:17.657165",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "personal_details_section",
+  "legal_name",
+  "initiated_name",
+  "abbrev",
+  "center",
+  "gender",
+  "phone_number",
+  "official_email",
+  "personal_email_id",
+  "column_break_gfgm",
+  "ashram",
+  "age",
+  "dob",
+  "doj",
+  "active_years",
+  "date_of_fi",
+  "date_of_si",
+  "enabled",
+  "section_break_cmlt",
+  "devotee_current_address",
+  "height",
+  "weight",
+  "place_of_birth",
+  "caste",
+  "column_break_sjoj",
+  "highest_education",
+  "arrival_date",
+  "joined_at",
+  "came_from",
+  "blood_group",
+  "section_break_adgp",
+  "father_name",
+  "father_number",
+  "address",
+  "email_address",
+  "column_break_smca",
+  "emergency_contact",
+  "emergency_contact_number",
+  "emergency_address",
+  "profile_tab",
+  "attachments_section",
+  "birth_certificate",
+  "attach_idiv",
+  "legal_name_change",
+  "gazette_document",
+  "column_break_yedm",
+  "digilocker",
+  "digiyatra",
+  "signature_scanned_copy",
+  "ration_card",
+  "ayushman_card",
+  "section_break_wkhc",
+  "education",
+  "bank_account_details",
+  "language",
+  "service",
+  "work_experience",
+  "skill",
+  "training",
+  "joining_formality_tab",
+  "joining_formality_section",
+  "photo",
+  "joining_form_fillup",
+  "medical_examination",
+  "medical_report",
+  "phone_it_registeration",
+  "phone_number_change",
+  "column_break_kteg",
+  "parent_control_app",
+  "si_recommendation_letter",
+  "fi_recommendation_letter",
+  "satvata_update",
+  "secretary_dms_update",
+  "joining_formality_remarks",
+  "health_insurance_tab",
+  "insurance",
+  "company",
+  "policy_number",
+  "insurance_upload",
+  "column_break_shqv",
+  "customer_id",
+  "validity",
+  "soft_copy",
+  "hi_remarks",
+  "aadhar_card_tab",
+  "aadhar_number",
+  "masked_aadhaar",
+  "upload_aadhar",
+  "aadhar_remarks",
+  "column_break_iaaf",
+  "updated_number",
+  "updated_address",
+  "physical_copy",
+  "aadhar_digilocker_attach",
+  "pan_card_tab",
+  "pan_number",
+  "aadhaar_card_linked",
+  "upload_pan",
+  "column_break_wwec",
+  "pan_update",
+  "pan_physical_copy",
+  "pan_remarks",
+  "pan_digilocker_attach",
+  "driving_license_tab",
+  "dl_license_number",
+  "dl_physical_copy",
+  "dl_expiry_date",
+  "dl_upload",
+  "dl_remarks",
+  "column_break_srrk",
+  "dl_phoneemail_update",
+  "two_wheeler_knows",
+  "four_wheeler_knows",
+  "issued_on",
+  "issued_at",
+  "dl_digilocker_attach",
+  "dl_address_updatge",
+  "voter_id_tab",
+  "voter_id_number",
+  "voter_id_upload",
+  "v_physical_copy",
+  "voter_id_remarks",
+  "column_break_jndu",
+  "v_phonemail_update",
+  "v_address_update",
+  "voter_id_digilocker_attach",
+  "passport_tab",
+  "passport_number",
+  "passport_place_of_issue",
+  "passport_date_of_issue",
+  "passport_date_of_expiry",
+  "passport_upload",
+  "column_break_ztwc",
+  "p_phonemail_update",
+  "address_update",
+  "p_physical_copy",
+  "passport_digilocker_attach",
+  "passport_remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "personal_details_section",
+   "fieldtype": "Section Break",
+   "label": "Personal Details"
+  },
+  {
+   "description": "As per aadhaar card",
+   "fieldname": "legal_name",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "Legal Name"
+  },
+  {
+   "fieldname": "initiated_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Initiated Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "abbrev",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "Abbrev"
+  },
+  {
+   "fieldname": "center",
+   "fieldtype": "Select",
+   "label": "Center",
+   "options": "Ahmedabad\nVadodara\nSurat\nRajkot"
+  },
+  {
+   "fieldname": "gender",
+   "fieldtype": "Select",
+   "label": "Gender",
+   "options": "Male\nFemale"
+  },
+  {
+   "fieldname": "phone_number",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "Phone Number"
+  },
+  {
+   "fieldname": "official_email",
+   "fieldtype": "Data",
+   "label": "Official Email ID"
+  },
+  {
+   "fieldname": "personal_email_id",
+   "fieldtype": "Data",
+   "label": "Personal Email ID"
+  },
+  {
+   "fieldname": "column_break_gfgm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ashram",
+   "fieldtype": "Select",
+   "label": "Ashram",
+   "options": "Brahmachari\nGrihastha\nFamily Members"
+  },
+  {
+   "fieldname": "age",
+   "fieldtype": "Int",
+   "label": "Age",
+   "read_only": 1
+  },
+  {
+   "fieldname": "dob",
+   "fieldtype": "Date",
+   "label": "DOB"
+  },
+  {
+   "fieldname": "doj",
+   "fieldtype": "Date",
+   "label": "DOJ"
+  },
+  {
+   "description": "Active years in ashram from joining date.",
+   "fieldname": "active_years",
+   "fieldtype": "Data",
+   "label": "Active Years",
+   "read_only": 1
+  },
+  {
+   "fieldname": "date_of_fi",
+   "fieldtype": "Date",
+   "label": "Date of FI"
+  },
+  {
+   "fieldname": "date_of_si",
+   "fieldtype": "Date",
+   "label": "Date of SI"
+  },
+  {
+   "default": "0",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "section_break_cmlt",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "devotee_current_address",
+   "fieldtype": "Data",
+   "label": "Devotee Current Address"
+  },
+  {
+   "fieldname": "height",
+   "fieldtype": "Int",
+   "label": "Height"
+  },
+  {
+   "fieldname": "weight",
+   "fieldtype": "Int",
+   "label": "Weight"
+  },
+  {
+   "fieldname": "place_of_birth",
+   "fieldtype": "Data",
+   "label": "Place of Birth"
+  },
+  {
+   "fieldname": "caste",
+   "fieldtype": "Data",
+   "label": "Caste"
+  },
+  {
+   "fieldname": "column_break_sjoj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "highest_education",
+   "fieldtype": "Data",
+   "label": "Highest Education"
+  },
+  {
+   "fieldname": "arrival_date",
+   "fieldtype": "Date",
+   "label": "Arrival Date"
+  },
+  {
+   "fieldname": "joined_at",
+   "fieldtype": "Data",
+   "label": "Joined At"
+  },
+  {
+   "fieldname": "came_from",
+   "fieldtype": "Data",
+   "label": "Came From"
+  },
+  {
+   "fieldname": "blood_group",
+   "fieldtype": "Data",
+   "label": "Blood Group"
+  },
+  {
+   "fieldname": "section_break_adgp",
+   "fieldtype": "Section Break",
+   "label": "Parent Details"
+  },
+  {
+   "fieldname": "father_name",
+   "fieldtype": "Data",
+   "label": "Father Name"
+  },
+  {
+   "fieldname": "father_number",
+   "fieldtype": "Data",
+   "label": "Father Number"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Data",
+   "label": "Address"
+  },
+  {
+   "fieldname": "email_address",
+   "fieldtype": "Data",
+   "label": "Email Address"
+  },
+  {
+   "fieldname": "column_break_smca",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "emergency_contact",
+   "fieldtype": "Data",
+   "label": "Emergency Contact"
+  },
+  {
+   "fieldname": "emergency_contact_number",
+   "fieldtype": "Data",
+   "label": "Emergency Contact Number"
+  },
+  {
+   "fieldname": "emergency_address",
+   "fieldtype": "Data",
+   "label": "Emergency Address"
+  },
+  {
+   "fieldname": "profile_tab",
+   "fieldtype": "Tab Break",
+   "label": "Profile"
+  },
+  {
+   "fieldname": "attachments_section",
+   "fieldtype": "Section Break",
+   "label": "Attachments"
+  },
+  {
+   "depends_on": "eval:doc.legal_name_change === \"Yes\";",
+   "fieldname": "birth_certificate",
+   "fieldtype": "Attach",
+   "label": "Birth Certificate"
+  },
+  {
+   "fieldname": "attach_idiv",
+   "fieldtype": "Attach"
+  },
+  {
+   "fieldname": "legal_name_change",
+   "fieldtype": "Select",
+   "label": "Legal Name Change",
+   "options": "No\nYes\nApplied"
+  },
+  {
+   "depends_on": "eval:doc.legal_name_change === \"Yes\";",
+   "fieldname": "gazette_document",
+   "fieldtype": "Attach",
+   "label": "Gazette Document"
+  },
+  {
+   "fieldname": "column_break_yedm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "digilocker",
+   "fieldtype": "Select",
+   "label": "Digilocker",
+   "options": "No\nYes"
+  },
+  {
+   "fieldname": "digiyatra",
+   "fieldtype": "Select",
+   "label": "Digiyatra"
+  },
+  {
+   "fieldname": "signature_scanned_copy",
+   "fieldtype": "Attach",
+   "label": "Signature Scanned Copy"
+  },
+  {
+   "fieldname": "ration_card",
+   "fieldtype": "Attach",
+   "label": "Ration Card"
+  },
+  {
+   "fieldname": "ayushman_card",
+   "fieldtype": "Attach",
+   "label": "Ayushman Card"
+  },
+  {
+   "fieldname": "section_break_wkhc",
+   "fieldtype": "Section Break",
+   "label": "Profile"
+  },
+  {
+   "fieldname": "education",
+   "fieldtype": "Table",
+   "label": "Education",
+   "options": "AMD FTM Education Table"
+  },
+  {
+   "fieldname": "bank_account_details",
+   "fieldtype": "Table",
+   "label": "Bank Account Details",
+   "options": "AMD FTM Bank Details Table"
+  },
+  {
+   "fieldname": "language",
+   "fieldtype": "Table",
+   "label": "Language",
+   "options": "AMD FTM Language Table"
+  },
+  {
+   "fieldname": "service",
+   "fieldtype": "Table",
+   "label": "Service",
+   "options": "AMD FTM Service Table"
+  },
+  {
+   "fieldname": "work_experience",
+   "fieldtype": "Table",
+   "label": "Work Experience",
+   "options": "AMD FTM Experience Table"
+  },
+  {
+   "fieldname": "skill",
+   "fieldtype": "Table",
+   "label": "Skill",
+   "options": "AMD FTM Skill Table"
+  },
+  {
+   "fieldname": "training",
+   "fieldtype": "Table",
+   "label": "Training",
+   "options": "AMD FTM Training Table"
+  },
+  {
+   "fieldname": "joining_formality_tab",
+   "fieldtype": "Tab Break",
+   "label": "Joining Formality"
+  },
+  {
+   "fieldname": "joining_formality_section",
+   "fieldtype": "Section Break",
+   "label": "Joining Formality"
+  },
+  {
+   "fieldname": "photo",
+   "fieldtype": "Attach Image",
+   "label": "Photo"
+  },
+  {
+   "fieldname": "joining_form_fillup",
+   "fieldtype": "Select",
+   "label": "Joining Form Fillup",
+   "options": "No\nYes"
+  },
+  {
+   "fieldname": "medical_examination",
+   "fieldtype": "Select",
+   "label": "Medical Examination",
+   "options": "No\nYes\nDenied\nNA - Grihastha"
+  },
+  {
+   "fieldname": "medical_report",
+   "fieldtype": "Attach",
+   "label": "Medical Report"
+  },
+  {
+   "fieldname": "phone_it_registeration",
+   "fieldtype": "Select",
+   "label": "Phone IT Registeration",
+   "options": "No\nYes"
+  },
+  {
+   "fieldname": "phone_number_change",
+   "fieldtype": "Select",
+   "label": "Phone Number Change",
+   "options": "No\nYes"
+  },
+  {
+   "fieldname": "column_break_kteg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "parent_control_app",
+   "fieldtype": "Select",
+   "label": "Parent Control App",
+   "options": "No\nYes"
+  },
+  {
+   "fieldname": "si_recommendation_letter",
+   "fieldtype": "Select",
+   "label": "SI Recommendation Letter",
+   "options": "No\nYes"
+  },
+  {
+   "fieldname": "fi_recommendation_letter",
+   "fieldtype": "Select",
+   "label": "FI Recommendation Letter"
+  },
+  {
+   "fieldname": "satvata_update",
+   "fieldtype": "Select",
+   "label": "Satvata Update",
+   "options": "No\nYes"
+  },
+  {
+   "fieldname": "secretary_dms_update",
+   "fieldtype": "Select",
+   "label": "Secretary DMS Update",
+   "options": "No\nYes"
+  },
+  {
+   "fieldname": "joining_formality_remarks",
+   "fieldtype": "Data",
+   "label": "Joining Formality Remarks"
+  },
+  {
+   "fieldname": "health_insurance_tab",
+   "fieldtype": "Tab Break",
+   "label": "Health Insurance"
+  },
+  {
+   "fieldname": "insurance",
+   "fieldtype": "Select",
+   "label": "Insurance",
+   "options": "Active\nNon-Active"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Data",
+   "label": "Company"
+  },
+  {
+   "fieldname": "policy_number",
+   "fieldtype": "Data",
+   "label": "Policy Number"
+  },
+  {
+   "fieldname": "insurance_upload",
+   "fieldtype": "Attach",
+   "label": "Insurance Upload"
+  },
+  {
+   "fieldname": "column_break_shqv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "customer_id",
+   "fieldtype": "Data",
+   "label": "Customer ID"
+  },
+  {
+   "fieldname": "validity",
+   "fieldtype": "Datetime",
+   "label": "Validity"
+  },
+  {
+   "fieldname": "soft_copy",
+   "fieldtype": "Select",
+   "label": "Soft Copy(Insurance)",
+   "options": "No\nYes"
+  },
+  {
+   "fieldname": "hi_remarks",
+   "fieldtype": "Data",
+   "label": "Health Insurance Remarks"
+  },
+  {
+   "fieldname": "aadhar_card_tab",
+   "fieldtype": "Tab Break",
+   "label": "Aadhar Card",
+   "options": "No\nYes"
+  },
+  {
+   "fieldname": "aadhar_number",
+   "fieldtype": "Data",
+   "label": "Aadhar Number"
+  },
+  {
+   "fieldname": "masked_aadhaar",
+   "fieldtype": "Attach",
+   "label": "Masked E-Aadhar"
+  },
+  {
+   "fieldname": "upload_aadhar",
+   "fieldtype": "Attach",
+   "label": "Upload E-Aadhar"
+  },
+  {
+   "fieldname": "aadhar_remarks",
+   "fieldtype": "Data",
+   "label": "Aadhar Remarks"
+  },
+  {
+   "fieldname": "column_break_iaaf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "updated_number",
+   "fieldtype": "Select",
+   "label": "Updated Number"
+  },
+  {
+   "fieldname": "updated_address",
+   "fieldtype": "Select",
+   "label": "Updated Address",
+   "options": "No\nYes\nApplied"
+  },
+  {
+   "fieldname": "physical_copy",
+   "fieldtype": "Select",
+   "label": "Physical Copy(Aadhar)",
+   "options": "No\nYes\nOrdered"
+  },
+  {
+   "fieldname": "aadhar_digilocker_attach",
+   "fieldtype": "Select",
+   "label": "Aadhar Digilocker Attach",
+   "options": "No\nYes"
+  },
+  {
+   "fieldname": "pan_card_tab",
+   "fieldtype": "Tab Break",
+   "label": "PAN Card"
+  },
+  {
+   "fieldname": "pan_number",
+   "fieldtype": "Data",
+   "label": "PAN Number"
+  },
+  {
+   "fieldname": "aadhaar_card_linked",
+   "fieldtype": "Select",
+   "label": "Aadhaar Card Linked",
+   "options": "No\nYes"
+  },
+  {
+   "fieldname": "upload_pan",
+   "fieldtype": "Attach",
+   "label": "Upload PAN"
+  },
+  {
+   "fieldname": "column_break_wwec",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "pan_update",
+   "fieldtype": "Select",
+   "label": "PAN Update",
+   "options": "No\nYes\nApplied"
+  },
+  {
+   "fieldname": "pan_physical_copy",
+   "fieldtype": "Select",
+   "label": "PAN Physical Copy",
+   "options": "No\nYes\nApplied"
+  },
+  {
+   "fieldname": "pan_remarks",
+   "fieldtype": "Data",
+   "label": "PAN Remarks"
+  },
+  {
+   "fieldname": "pan_digilocker_attach",
+   "fieldtype": "Select",
+   "label": "PAN Digilocker Attach",
+   "options": "No\nYes"
+  },
+  {
+   "fieldname": "driving_license_tab",
+   "fieldtype": "Tab Break",
+   "label": "Driving License"
+  },
+  {
+   "fieldname": "dl_license_number",
+   "fieldtype": "Data",
+   "label": "DL License Number"
+  },
+  {
+   "fieldname": "dl_physical_copy",
+   "fieldtype": "Select",
+   "label": "Physical Copy(Driving License)",
+   "options": "No\nYes\nApplied"
+  },
+  {
+   "fieldname": "dl_expiry_date",
+   "fieldtype": "Data",
+   "label": "DL Expiry Date"
+  },
+  {
+   "fieldname": "dl_upload",
+   "fieldtype": "Attach",
+   "label": "DL Upload"
+  },
+  {
+   "fieldname": "dl_remarks",
+   "fieldtype": "Data",
+   "label": "DL Remarks"
+  },
+  {
+   "fieldname": "column_break_srrk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "dl_phoneemail_update",
+   "fieldtype": "Select",
+   "label": "DL Phone/Email Update",
+   "options": "No\nYes\nApplied"
+  },
+  {
+   "default": "0",
+   "fieldname": "two_wheeler_knows",
+   "fieldtype": "Check",
+   "label": "Two Wheeler Knows"
+  },
+  {
+   "default": "0",
+   "fieldname": "four_wheeler_knows",
+   "fieldtype": "Check",
+   "label": "Four Wheeler Knows"
+  },
+  {
+   "fieldname": "issued_on",
+   "fieldtype": "Date",
+   "label": "DL Issued On"
+  },
+  {
+   "fieldname": "issued_at",
+   "fieldtype": "Data",
+   "label": "DL Issued At"
+  },
+  {
+   "fieldname": "dl_digilocker_attach",
+   "fieldtype": "Select",
+   "label": "DL Digilocker Attach",
+   "options": "No\nYes"
+  },
+  {
+   "fieldname": "dl_address_updatge",
+   "fieldtype": "Select",
+   "label": "DL Address Updatge",
+   "options": "No\nYes\nApplied"
+  },
+  {
+   "fieldname": "voter_id_tab",
+   "fieldtype": "Tab Break",
+   "label": "Voter ID"
+  },
+  {
+   "fieldname": "voter_id_number",
+   "fieldtype": "Data",
+   "label": "Voter ID Number"
+  },
+  {
+   "fieldname": "voter_id_upload",
+   "fieldtype": "Attach",
+   "label": "Voter ID Upload"
+  },
+  {
+   "fieldname": "v_physical_copy",
+   "fieldtype": "Select",
+   "label": "Physical Copy(Voter ID)"
+  },
+  {
+   "fieldname": "voter_id_remarks",
+   "fieldtype": "Data",
+   "label": "Voter ID Remarks"
+  },
+  {
+   "fieldname": "column_break_jndu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "v_phonemail_update",
+   "fieldtype": "Select",
+   "label": "Voter ID Phone\\Email Update",
+   "options": "No\nYes\nApplied"
+  },
+  {
+   "fieldname": "v_address_update",
+   "fieldtype": "Select",
+   "label": "Voter ID Address Update",
+   "options": "No\nYes\nApplied"
+  },
+  {
+   "fieldname": "voter_id_digilocker_attach",
+   "fieldtype": "Select",
+   "label": "Voter ID Digilocker Attach",
+   "options": "No\nYes"
+  },
+  {
+   "fieldname": "passport_tab",
+   "fieldtype": "Tab Break",
+   "label": "Passport"
+  },
+  {
+   "fieldname": "passport_number",
+   "fieldtype": "Data",
+   "label": "Passport Number"
+  },
+  {
+   "fieldname": "passport_place_of_issue",
+   "fieldtype": "Data",
+   "label": "Passport Place of Issue"
+  },
+  {
+   "fieldname": "passport_date_of_issue",
+   "fieldtype": "Date",
+   "label": "Passport Date of Issue"
+  },
+  {
+   "fieldname": "passport_date_of_expiry",
+   "fieldtype": "Date",
+   "label": "Passport Date of Expiry"
+  },
+  {
+   "fieldname": "passport_upload",
+   "fieldtype": "Attach",
+   "label": "Passport Upload"
+  },
+  {
+   "fieldname": "column_break_ztwc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "p_phonemail_update",
+   "fieldtype": "Select",
+   "label": "Passport Phone\\Email Update",
+   "options": "No\nYes\nApplied"
+  },
+  {
+   "fieldname": "address_update",
+   "fieldtype": "Select",
+   "label": "Passport Address Update",
+   "options": "No\nYes\nApplied"
+  },
+  {
+   "fieldname": "p_physical_copy",
+   "fieldtype": "Select",
+   "label": "Physical Copy(Passport)",
+   "options": "No\nYes\nApplied"
+  },
+  {
+   "fieldname": "passport_digilocker_attach",
+   "fieldtype": "Select",
+   "label": "Passport Digilocker Attach",
+   "options": "No\nYes"
+  },
+  {
+   "fieldname": "passport_remarks",
+   "fieldtype": "Data",
+   "label": "Passport Remarks"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-03-28 11:37:38.728890",
+ "modified_by": "Administrator",
+ "module": "AMD Bash",
+ "name": "AMD FTM Devotee",
+ "naming_rule": "By fieldname",
+ "owner": "yashsmk003@gmail.com",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

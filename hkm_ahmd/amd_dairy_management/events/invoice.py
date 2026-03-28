@@ -6,32 +6,45 @@ from collections import defaultdict
 
 # Config
 ORDERS_DTYPE = "AMD Orders"
-SUBS_DTYPE   = "AMD Customer Subscription"
+SUBS_DTYPE = "AMD Customer Subscription"
 
 # Orders
-ORDERS_CUSTOMER       = "customer"
-ORDERS_DELIVERY_DATE  = "delivery_date"
-ORDERS_SOURCE         = "order_source"
-ORDERS_ITEMS_CHILD    = "extra_items"    
-ORDER_ITEM_FIELD      = "item"
-ORDER_QTY_FIELD       = "quantity"
+ORDERS_CUSTOMER = "customer"
+ORDERS_DELIVERY_DATE = "delivery_date"
+ORDERS_SOURCE = "order_source"
+ORDERS_ITEMS_CHILD = "extra_items"
+ORDER_ITEM_FIELD = "item"
+ORDER_QTY_FIELD = "quantity"
 
 # Subscriptions
-SUBS_CUSTOMER         = "customer"
-SUBS_ACTIVE           = "active"
-SUBS_STATUS           = "status"
-SUBS_BILLING_TYPE     = "subscription_billing_type"
+SUBS_CUSTOMER = "customer"
+SUBS_ACTIVE = "active"
+SUBS_STATUS = "status"
+SUBS_BILLING_TYPE = "subscription_billing_type"
 
-PRICE_LIST            = "Standard Selling"
-LOG_PREFIX            = "[INV-SCHED]"
+PRICE_LIST = "Standard Selling"
+LOG_PREFIX = "[INV-SCHED]"
+
+
+def _get_dairy_settings():
+    settings = frappe.get_cached_doc("AMD Dairy Management Settings")
+    return {
+        "company": settings.company,
+        "cost_head": settings.cost_head,
+        "warehouse": settings.warehouse,
+        "default_sales_income_account": settings.default_sales_income_account,
+    }
+
 
 # Helpers
 def _site_today() -> date:
     """Site-timezone 'today' to avoid UTC vs IST Monday mismatch."""
     return getdate(now_datetime())
 
+
 def _norm(v: str) -> str:
     return (v or "").strip().lower()
+
 
 def _last_week_window(today: date):
     """Last complete Mon..Sun before 'today'."""
@@ -39,12 +52,14 @@ def _last_week_window(today: date):
     prev_sunday = prev_monday + timedelta(days=6)
     return prev_monday, prev_sunday
 
+
 def _last_month_window(today: date):
     """Full previous calendar month."""
     first_this = today.replace(day=1)
-    last_prev  = first_this - timedelta(days=1)
+    last_prev = first_this - timedelta(days=1)
     first_prev = last_prev.replace(day=1)
     return first_prev, last_prev
+
 
 def _pick_child_field(odoc):
     """Use configured field if present; else auto-detect a table field with .item & .quantity."""
@@ -56,7 +71,8 @@ def _pick_child_field(odoc):
             r0 = rows[0]
             if hasattr(r0, ORDER_ITEM_FIELD) and hasattr(r0, ORDER_QTY_FIELD):
                 return df.fieldname
-    return ORDERS_ITEMS_CHILD  # fallback
+    return ORDERS_ITEMS_CHILD
+
 
 def _aggregate_items(order_names, child_field):
     agg = defaultdict(float)
@@ -64,10 +80,11 @@ def _aggregate_items(order_names, child_field):
         d = frappe.get_doc(ORDERS_DTYPE, name)
         for r in getattr(d, child_field, []) or []:
             code = getattr(r, ORDER_ITEM_FIELD, None)
-            qty  = float(getattr(r, ORDER_QTY_FIELD, 0) or 0)
+            qty = float(getattr(r, ORDER_QTY_FIELD, 0) or 0)
             if code and qty > 0:
                 agg[code] += qty
     return agg
+
 
 def _filter_priced_items(item_qty: dict):
     """Return (priced_items_dict, missing_price_codes) using PRICE_LIST."""
@@ -85,18 +102,38 @@ def _filter_priced_items(item_qty: dict):
             priced[code] = qty
     return priced, missing
 
+
 def _create_invoice(customer, item_qty, period_from, period_to, label):
+    settings = _get_dairy_settings()
+
+    company = settings.get("company")
+    cost_head = settings.get("cost_head")
+    warehouse = settings.get("warehouse")
+    default_sales_income_account = settings.get("default_sales_income_account")
+
+    if not company:
+        frappe.throw("Company is missing in AMD Dairy Management Settings")
+
     inv = frappe.new_doc("Sales Invoice")
-    inv.customer         = customer
-    inv.posting_date     = nowdate()
-    inv.due_date         = nowdate()
+    inv.customer = customer
+    inv.posting_date = nowdate()
+    inv.due_date = nowdate()
     inv.set_posting_time = 1
-    inv.company          = "Golden Lotus Foundation"
-    inv.cost_head        = "Dairy"
+    inv.company = company
+
+    if cost_head and hasattr(inv, "cost_head"):
+        inv.cost_head = cost_head
+
+    if warehouse and hasattr(inv, "set_warehouse"):
+        inv.set_warehouse = warehouse
+
+    if default_sales_income_account and hasattr(inv, "default_sales_income_account"):
+        inv.default_sales_income_account = default_sales_income_account
 
     # Optional custom fields if they exist
     if hasattr(inv, "billing_period_from"):
         inv.billing_period_from = period_from
+
     if hasattr(inv, "billing_period_to"):
         inv.billing_period_to = period_to
 
@@ -106,10 +143,26 @@ def _create_invoice(customer, item_qty, period_from, period_to, label):
             {"item_code": item_code, "price_list": PRICE_LIST, "selling": 1},
             "price_list_rate",
         ) or 0
+
         if not rate or float(rate) == 0:
-            frappe.logger().warning(f"{LOG_PREFIX} [{label}] Skip {item_code}: missing price in {PRICE_LIST}")
+            frappe.logger().warning(
+                f"{LOG_PREFIX} [{label}] Skip {item_code}: missing price in {PRICE_LIST}"
+            )
             continue
-        inv.append("items", {"item_code": item_code, "qty": qty, "rate": rate})
+
+        item_row = {
+            "item_code": item_code,
+            "qty": qty,
+            "rate": rate,
+        }
+
+        if warehouse:
+            item_row["warehouse"] = warehouse
+
+        if default_sales_income_account:
+            item_row["income_account"] = default_sales_income_account
+
+        inv.append("items", item_row)
 
     if not inv.items:
         return None
@@ -118,6 +171,7 @@ def _create_invoice(customer, item_qty, period_from, period_to, label):
     inv.save()
     inv.submit()
     return inv.name
+
 
 def _best_billing_type_per_customer():
     """Pick highest cadence if multiple subs exist: Daily<Weekly<Monthly."""
@@ -128,23 +182,29 @@ def _best_billing_type_per_customer():
     )
     if not subs:
         return {}
+
     priority = {"daily": 1, "weekly": 2, "monthly": 3}
     best = {}
+
     for s in subs:
         cust = s[SUBS_CUSTOMER]
-        bt   = _norm(s[SUBS_BILLING_TYPE] or "monthly")
+        bt = _norm(s[SUBS_BILLING_TYPE] or "monthly")
         if cust not in best or priority.get(bt, 99) < priority.get(best[cust], 99):
             best[cust] = bt
+
     return best
+
 
 def _process_period(customers: set, date_from: date, date_to: date, label: str, dry_run: bool):
     """For each customer, collect subscription orders in window and create invoice."""
     created = []
     for customer in customers:
-        # fetch all orders in range, then keep only Subscription ones
         orders = frappe.get_all(
             ORDERS_DTYPE,
-            filters={ORDERS_CUSTOMER: customer, ORDERS_DELIVERY_DATE: ["between", [date_from, date_to]]},
+            filters={
+                ORDERS_CUSTOMER: customer,
+                ORDERS_DELIVERY_DATE: ["between", [date_from, date_to]],
+            },
             fields=["name", ORDERS_SOURCE, ORDERS_DELIVERY_DATE],
             order_by=f"{ORDERS_DELIVERY_DATE} asc",
         )
@@ -161,34 +221,41 @@ def _process_period(customers: set, date_from: date, date_to: date, label: str, 
 
         priced, missing = _filter_priced_items(item_qty)
         if missing:
-            frappe.logger().warning(f"{LOG_PREFIX} [{label}] {customer}: missing prices in {PRICE_LIST}: {missing}")
+            frappe.logger().warning(
+                f"{LOG_PREFIX} [{label}] {customer}: missing prices in {PRICE_LIST}: {missing}"
+            )
         if not priced:
             continue
 
         if dry_run:
-            frappe.logger().info(f"{LOG_PREFIX} DRY RUN → would create invoice for {customer} ({date_from}→{date_to})")
+            frappe.logger().info(
+                f"{LOG_PREFIX} DRY RUN → would create invoice for {customer} ({date_from}→{date_to})"
+            )
             continue
 
         inv_name = _create_invoice(customer, priced, date_from, date_to, label)
         if inv_name:
             created.append(inv_name)
-            frappe.logger().info(f"{LOG_PREFIX} ✅ {inv_name} for {customer} ({date_from}→{date_to})")
+            frappe.logger().info(
+                f"{LOG_PREFIX} ✅ {inv_name} for {customer} ({date_from}→{date_to})"
+            )
+
     return created
 
-# MAIN (same function name)
+
 @frappe.whitelist()
 def generate_subscription_invoices(assume_date: str | None = None, dry_run: int = 0):
     """
     Run daily.
     - If Monday: create invoices for Weekly subscriptions for last Mon–Sun.
     - If 1st:    create invoices for Monthly subscriptions for previous month.
+
     Testing:
       bench --site <site> execute path.to.generate_subscription_invoices --kwargs '{"assume_date":"2025-10-20","dry_run":1}'
     """
-    # Resolve 'today'
     today = getdate(assume_date) if assume_date else _site_today()
-    do_weekly  = (today.weekday() == 0)   # Monday
-    do_monthly = (today.day == 1)         # 1st
+    do_weekly = today.weekday() == 0
+    do_monthly = today.day == 1
 
     frappe.logger().info(f"{LOG_PREFIX} today={today} weekly={do_weekly} monthly={do_monthly}")
     if not (do_weekly or do_monthly):
@@ -200,16 +267,21 @@ def generate_subscription_invoices(assume_date: str | None = None, dry_run: int 
         frappe.logger().info(f"{LOG_PREFIX} No active subscriptions.")
         return {"today": str(today), "ran": False, "reason": "no_active_subscriptions"}
 
-    weekly_customers  = {c for c, bt in best.items() if bt == "weekly"} if do_weekly else set()
+    weekly_customers = {c for c, bt in best.items() if bt == "weekly"} if do_weekly else set()
     monthly_customers = {c for c, bt in best.items() if bt == "monthly"} if do_monthly else set()
 
     created = []
     if weekly_customers:
         wf, wt = _last_week_window(today)
-        created += _process_period(weekly_customers, wf, wt, label="weekly", dry_run=bool(int(dry_run)))
+        created += _process_period(
+            weekly_customers, wf, wt, label="weekly", dry_run=bool(int(dry_run))
+        )
+
     if monthly_customers:
         mf, mt = _last_month_window(today)
-        created += _process_period(monthly_customers, mf, mt, label="monthly", dry_run=bool(int(dry_run)))
+        created += _process_period(
+            monthly_customers, mf, mt, label="monthly", dry_run=bool(int(dry_run))
+        )
 
     return {
         "today": str(today),
