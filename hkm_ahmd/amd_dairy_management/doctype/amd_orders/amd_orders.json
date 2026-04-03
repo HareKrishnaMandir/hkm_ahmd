@@ -46,7 +46,7 @@
   },
   {
    "fieldname": "delivery_date",
-   "fieldtype": "Data",
+   "fieldtype": "Date",
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Delivery Date"
@@ -91,7 +91,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-28 17:49:19.521791",
+ "modified": "2026-03-30 11:42:06.963446",
  "modified_by": "yashsmk003@gmail.com",
  "module": "AMD Dairy Management",
  "name": "AMD Orders",

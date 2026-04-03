@@ -17,13 +17,17 @@ scheduler_events = {
             "hkm_ahmd.amd_dairy_management.api.create_orders.generate_daily_orders"
         ],
         "0 8 * * *": [
-            "hkm_ahmd.tasks.attendance_check.send_unchecked_out_vehicle_alert",
-            "hkm_ahmd.amd_dairy_management.events.invoice.generate_subscription_invoices"
+            "hkm_ahmd.tasks.attendance_check.send_unchecked_out_vehicle_alert"
         ],
         "*/5 * * * *": [
             "hkm_ahmd.amd_vehicle_management.doctype.amd_vehicle_assignment.amd_vehicle_assignment.update_vehicle_status",
             "hkm_ahmd.tasks.vehicle_availability.update_vehicle_availability_status",
         ],
+    }
+}
+doc_events = {
+    "Payment Entry": {
+        "before_submit": "hkm_ahmd.amd_dairy_management.events.payment_entry_events.payment_entry_before_submit"
     }
 }
 # Apps
