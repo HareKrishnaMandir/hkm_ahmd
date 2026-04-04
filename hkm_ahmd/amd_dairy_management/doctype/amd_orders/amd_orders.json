@@ -2,7 +2,7 @@
  "actions": [],
  "allow_rename": 1,
  "autoname": "ORD.-.YYYY.-.MM.-.####",
- "creation": "2025-11-05 15:49:17.939949",
+ "creation": "2026-04-04 14:05:33.000465",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
@@ -16,7 +16,9 @@
   "order_status",
   "order_source",
   "extra_items",
-  "remarks"
+  "remarks",
+  "subscription_reference",
+  "shift"
  ],
  "fields": [
   {
@@ -86,17 +88,29 @@
    "fieldname": "remarks",
    "fieldtype": "Small Text",
    "label": "Remarks"
+  },
+  {
+   "fieldname": "subscription_reference",
+   "fieldtype": "Link",
+   "label": "Subscription Reference",
+   "options": "AMD Customer Subscription"
+  },
+  {
+   "fieldname": "shift",
+   "fieldtype": "Select",
+   "label": "Shift",
+   "options": "Morning\nEvening"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-30 11:42:06.963446",
+ "modified": "2026-04-04 14:22:16.084168",
  "modified_by": "yashsmk003@gmail.com",
  "module": "AMD Dairy Management",
  "name": "AMD Orders",
  "naming_rule": "Expression",
- "owner": "jaypatel51895@gmail.com",
+ "owner": "Administrator",
  "permissions": [
   {
    "create": 1,

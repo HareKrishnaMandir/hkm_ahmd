@@ -13,8 +13,8 @@ scheduler_events = {
         "hkm_ahmd.amd_vehicle_management.doctype.amd_vehicle_assignment.amd_vehicle_assignment.check_vehicle_status_and_notify",
     ],
     "cron": {
-        "0 17 * * *": [
-            "hkm_ahmd.amd_dairy_management.api.create_orders.generate_daily_orders"
+        "0 * * * *": [
+            "hkm_ahmd.amd_dairy_management.doctype.amd_orders.amd_orders.run_dynamic_order_schedulers"
         ],
         "0 8 * * *": [
             "hkm_ahmd.tasks.attendance_check.send_unchecked_out_vehicle_alert"
