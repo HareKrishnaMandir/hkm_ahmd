@@ -1,5 +1,6 @@
+
 import frappe
-from frappe.utils import getdate, now, add_days, now_datetime
+from frappe.utils import getdate, now, add_days, now_datetime, flt, nowdate
 from frappe.model.document import Document
 
 
@@ -393,6 +394,165 @@ def run_dynamic_order_schedulers():
     if evening_hour is not None and current_hour == evening_hour:
         frappe.logger().info("[ORDER-SCHEDULER] Running Evening Orders")
         generate_evening_orders()
+
+
+# =========================
+# DYNAMIC SALES INVOICE RATE LOGIC
+# =========================
+
+def get_customer_default_price_list(customer):
+    """
+    Dynamically get Customer.default_price_list.
+    Fallback to Standard Selling if blank.
+    """
+    price_list = frappe.db.get_value("Customer", customer, "default_price_list")
+    return (price_list or "Standard Selling").strip()
+
+
+def get_item_price_from_price_list(item_code, price_list, uom=None):
+    """
+    Get selling price from Item Price using given price list.
+    First try with UOM if available, then fallback without UOM.
+    Latest modified/creation wins.
+    """
+    filters = {
+        "item_code": item_code,
+        "price_list": price_list,
+        "selling": 1,
+    }
+
+    if uom:
+        rows = frappe.get_all(
+            "Item Price",
+            filters={**filters, "uom": uom},
+            fields=["name", "price_list_rate"],
+            order_by="modified desc, creation desc",
+            limit=1,
+        )
+        if rows:
+            return flt(rows[0].price_list_rate)
+
+    rows = frappe.get_all(
+        "Item Price",
+        filters=filters,
+        fields=["name", "price_list_rate"],
+        order_by="modified desc, creation desc",
+        limit=1,
+    )
+    if rows:
+        return flt(rows[0].price_list_rate)
+
+    return 0.0
+
+
+def get_item_standard_rate(item_code):
+    """
+    Last fallback from Item.standard_rate
+    """
+    standard_rate = frappe.db.get_value("Item", item_code, "standard_rate")
+    return flt(standard_rate)
+
+
+def get_dynamic_item_rate(customer, item_code, uom=None):
+    """
+    Fully dynamic rate resolution:
+    1. Customer.default_price_list
+    2. Standard Selling
+    3. Item.standard_rate
+    """
+    customer_price_list = get_customer_default_price_list(customer)
+
+    rate = get_item_price_from_price_list(item_code, customer_price_list, uom=uom)
+    if rate > 0:
+        return {
+            "price_list": customer_price_list,
+            "rate": rate,
+            "source": "customer_price_list",
+        }
+
+    fallback_rate = get_item_price_from_price_list(item_code, "Standard Selling", uom=uom)
+    if fallback_rate > 0:
+        return {
+            "price_list": customer_price_list,
+            "rate": fallback_rate,
+            "source": "standard_selling",
+        }
+
+    item_standard_rate = get_item_standard_rate(item_code)
+    return {
+        "price_list": customer_price_list,
+        "rate": item_standard_rate,
+        "source": "item_standard_rate",
+    }
+
+
+@frappe.whitelist()
+def create_sales_invoice_from_amd_order(order_name):
+    """
+    Create Sales Invoice from AMD Order using dynamic customer price list.
+
+    Safe behavior:
+    - Uses Customer.default_price_list if available
+    - Falls back to Standard Selling
+    - Falls back to Item.standard_rate if Item Price is missing
+    - Does not change your existing order generation logic
+    """
+    order = frappe.get_doc("AMD Orders", order_name)
+
+    if not order.customer:
+        frappe.throw("Customer is required")
+
+    existing_invoice = frappe.db.get_value(
+        "Sales Invoice Item",
+        {"amd_order": order.name},
+        "parent"
+    )
+    if existing_invoice:
+        return existing_invoice
+
+    customer_price_list = get_customer_default_price_list(order.customer)
+
+    si = frappe.new_doc("Sales Invoice")
+    si.customer = order.customer
+    si.posting_date = nowdate()
+    si.due_date = nowdate()
+    si.set_posting_time = 1
+    si.selling_price_list = customer_price_list
+
+    for row in (order.extra_items or []):
+        item_code = (getattr(row, "item", None) or "").strip()
+        qty = flt(getattr(row, "quantity", 0))
+
+        if not item_code or qty <= 0:
+            continue
+
+        item_doc = frappe.get_cached_doc("Item", item_code)
+        uom = item_doc.stock_uom
+
+        price_data = get_dynamic_item_rate(
+            customer=order.customer,
+            item_code=item_code,
+            uom=uom,
+        )
+        rate = flt(price_data["rate"])
+
+        si.append("items", {
+            "item_code": item_code,
+            "item_name": item_doc.item_name,
+            "description": item_doc.description,
+            "uom": uom,
+            "stock_uom": uom,
+            "qty": qty,
+            "price_list_rate": rate,
+            "rate": rate,
+            "amount": flt(rate) * qty,
+            "amd_order": order.name,
+        })
+
+    si.insert(ignore_permissions=True)
+    si.save()
+
+    return si.name
 
 
 def parse_scheduler_hour(value):
