@@ -4,10 +4,13 @@ from frappe.utils import flt
 
 def auto_allocate_payment_entry_doc_to_customer_invoices(doc) -> dict:
     """
-    Payment Type = Receive ,Party Type = Customer ,Cost Head = Dairy
+    Payment Type = Receive, Party Type = Customer, Cost Head = Dairy
 
-    It appends outstanding Sales Invoice references to the same draft Payment Entry before submit, so normal ERPNext submit logic handles the actual reconciliation.
-    This does NOT affect other Payment Entries.
+    Behavior:
+    1. If Sales Invoice references are already present (for example selected from app),
+       DO NOT auto-allocate again.
+    2. If no references are present, treat it like advance payment and auto-allocate
+       against customer's outstanding Sales Invoices.
     """
     if not doc:
         return {"ok": False, "reason": "missing_doc"}
@@ -37,7 +40,6 @@ def auto_allocate_payment_entry_doc_to_customer_invoices(doc) -> dict:
 
     settings = frappe.get_cached_doc("AMD Dairy Management Settings")
     settings_cost_head = (settings.cost_head or "").strip()
-
     doc_cost_head = (getattr(doc, "cost_head", "") or "").strip()
 
     if not settings_cost_head or doc_cost_head != settings_cost_head:
@@ -50,7 +52,40 @@ def auto_allocate_payment_entry_doc_to_customer_invoices(doc) -> dict:
             "sales_invoices": [],
         }
 
-    available = flt(doc.paid_amount or doc.unallocated_amount)
+    # If app/user already selected Sales Invoice references,
+    # do NOT auto-allocate again.
+    
+    existing_invoice_refs = [
+        ref for ref in (doc.references or [])
+        if ref.reference_doctype == "Sales Invoice" and ref.reference_name
+    ]
+
+    if existing_invoice_refs:
+        if hasattr(doc, "set_missing_ref_details"):
+            try:
+                doc.set_missing_ref_details(force=True)
+            except TypeError:
+                doc.set_missing_ref_details()
+
+        if hasattr(doc, "set_amounts"):
+            doc.set_amounts()
+
+        return {
+            "ok": True,
+            "reason": "references_already_present_skip_auto_allocate",
+            "payment_entry": doc.name,
+            "allocated": sum(flt(ref.allocated_amount) for ref in existing_invoice_refs),
+            "remaining_unallocated": flt(doc.unallocated_amount),
+            "sales_invoices": [
+                {
+                    "sales_invoice": ref.reference_name,
+                    "allocated": flt(ref.allocated_amount),
+                }
+                for ref in existing_invoice_refs
+            ],
+        }
+
+    available = flt(doc.unallocated_amount or doc.paid_amount)
     if available <= 0:
         return {
             "ok": True,
@@ -62,8 +97,6 @@ def auto_allocate_payment_entry_doc_to_customer_invoices(doc) -> dict:
         }
 
     # Fetch only submitted unpaid invoices for same customer.
-    # We do NOT filter Sales Invoice by cost_head here, to avoid failures
-    # on ERPs where that field may not exist or may be blank.
     invoices = frappe.get_all(
         "Sales Invoice",
         filters={
@@ -88,7 +121,6 @@ def auto_allocate_payment_entry_doc_to_customer_invoices(doc) -> dict:
     total_allocated = 0.0
     used_invoices = []
 
-    # If references are already present, keep them and avoid duplicates.
     for row in invoices:
         if available <= 0:
             break
@@ -103,26 +135,14 @@ def auto_allocate_payment_entry_doc_to_customer_invoices(doc) -> dict:
         if allocate_now <= 0:
             continue
 
-        existing_ref = None
-        for ref in (doc.references or []):
-            if (
-                ref.reference_doctype == "Sales Invoice"
-                and ref.reference_name == invoice_name
-            ):
-                existing_ref = ref
-                break
-
-        if existing_ref:
-            existing_ref.allocated_amount = flt(existing_ref.allocated_amount) + allocate_now
-        else:
-            doc.append(
-                "references",
-                {
-                    "reference_doctype": "Sales Invoice",
-                    "reference_name": invoice_name,
-                    "allocated_amount": allocate_now,
-                },
-            )
+        doc.append(
+            "references",
+            {
+                "reference_doctype": "Sales Invoice",
+                "reference_name": invoice_name,
+                "allocated_amount": allocate_now,
+            },
+        )
 
         available -= allocate_now
         total_allocated += allocate_now
@@ -149,4 +169,4 @@ def auto_allocate_payment_entry_doc_to_customer_invoices(doc) -> dict:
         "allocated": total_allocated,
         "remaining_unallocated": flt(doc.unallocated_amount),
         "sales_invoices": used_invoices,
-    }
+    } 
