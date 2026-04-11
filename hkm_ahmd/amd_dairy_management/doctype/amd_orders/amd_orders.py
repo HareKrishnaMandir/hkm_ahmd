@@ -79,16 +79,24 @@ class AMDOrders(Document):
 @frappe.whitelist()
 def generate_daily_orders(target_shift="Morning"):
     """
-    Generate subscription orders for tomorrow.
+    Generate subscription orders.
 
-    Merged logic:
+    Logic:
+    - Morning orders => for tomorrow
+    - Evening orders => for today
     - One Subscription order per customer + shift + delivery_date
     - If same customer has multiple valid subscriptions for same shift/date,
       all items are merged into one order
     - Re-running generator will not duplicate same subscription items
     """
     today = getdate()
-    delivery_date = add_days(today, 1)
+
+    target_shift = (target_shift or "Morning").strip()
+
+    if target_shift == "Evening":
+        delivery_date = today
+    else:
+        delivery_date = add_days(today, 1)
 
     subscriptions = frappe.get_all(
         "AMD Customer Subscription",
