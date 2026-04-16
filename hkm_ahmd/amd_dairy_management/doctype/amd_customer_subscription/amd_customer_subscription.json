@@ -8,6 +8,8 @@
  "field_order": [
   "customer",
   "subscription_type",
+  "weekly_day",
+  "monthly_date",
   "route",
   "subscription_billing_type",
   "active",
@@ -90,12 +92,23 @@
    "fieldname": "is_alternate_days",
    "fieldtype": "Check",
    "label": "Is Alternate days"
+  },
+  {
+   "fieldname": "weekly_day",
+   "fieldtype": "Select",
+   "label": "Weekly Day",
+   "options": "Monday\nTuesday\nWednesday\nThursday\nFriday\nSaturday\nSunday"
+  },
+  {
+   "fieldname": "monthly_date",
+   "fieldtype": "Int",
+   "label": "Monthly Date"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-04 14:14:25.966168",
+ "modified": "2026-04-13 13:50:40.133409",
  "modified_by": "yashsmk003@gmail.com",
  "module": "AMD Dairy Management",
  "name": "AMD Customer Subscription",

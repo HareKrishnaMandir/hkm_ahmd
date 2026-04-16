@@ -298,15 +298,22 @@ def is_subscription_day(sub_doc, delivery_date, target_shift=None):
         if is_subscription_paused_on(sub_doc, delivery_date):
             return False
 
-        delivery_day = (getattr(sub_doc, "delivery_day", None) or "").strip()
+        weekly_day = (getattr(sub_doc, "weekly_day", None) or "").strip()
+        if not weekly_day:
+            return False
+
         weekday = delivery_date.strftime("%A")
-        return weekday == delivery_day if delivery_day else False
+        return weekday == weekly_day
 
     elif subscription_type == "Monthly":
         if is_subscription_paused_on(sub_doc, delivery_date):
             return False
 
-        return delivery_date.day == 1
+        monthly_date = cint_safe(getattr(sub_doc, "monthly_date", 0))
+        if monthly_date < 1 or monthly_date > 31:
+            return False
+
+        return delivery_date.day == monthly_date
 
     elif subscription_type == "Alternate Days" or cint_safe(sub_doc.is_alternate_days) == 1:
         return should_generate_alternate_order(sub_doc, delivery_date, target_shift)
