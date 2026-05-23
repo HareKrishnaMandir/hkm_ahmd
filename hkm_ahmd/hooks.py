@@ -7,22 +7,29 @@ app_license = "mit"
 scheduler_events = {
     "daily":[
         "hkm_ahmd.amd_vehicle_management.doctype.amd_vehicle_requestor.amd_vehicle_requestor.reset_disabled_requestors",
-        "hkm_ahmd.amd_vehicle_management.doctype.amd_vehicle_in_out_log.amd_vehicle_in_out_log.reset_vehicle_trip"
+        "hkm_ahmd.amd_vehicle_management.doctype.amd_vehicle_in_out_log.amd_vehicle_in_out_log.reset_vehicle_trip",
+        "hkm_ahmd.project_management.doctype.tasks.tasks.run_recurring_tasks",
+        "hkm_ahmd.project_management.doctype.tasks.tasks.auto_update_overdue_statuses"
     ],
     "hourly": [
         "hkm_ahmd.amd_vehicle_management.doctype.amd_vehicle_assignment.amd_vehicle_assignment.check_vehicle_status_and_notify",
+        "hkm_ahmd.project_management.doctype.tasks.tasks.auto_stop_overdue_timers"
     ],
     "cron": {
         "0 * * * *": [
             "hkm_ahmd.amd_dairy_management.doctype.amd_orders.amd_orders.run_dynamic_order_schedulers"
         ],
         "0 8 * * *": [
-            "hkm_ahmd.tasks.attendance_check.send_unchecked_out_vehicle_alert"
+            "hkm_ahmd.tasks.attendance_check.send_unchecked_out_vehicle_alert",
+            "hkm_ahmd.project_management.doctype.tasks.tasks.take_morning_snapshot"
         ],
         "*/5 * * * *": [
             "hkm_ahmd.amd_vehicle_management.doctype.amd_vehicle_assignment.amd_vehicle_assignment.update_vehicle_status",
             "hkm_ahmd.tasks.vehicle_availability.update_vehicle_availability_status",
         ],
+        "0 20 * * *": [
+            "hkm_ahmd.project_management.doctype.tasks.tasks.take_evening_snapshot"
+        ]
     }
 }
 doc_events = {
