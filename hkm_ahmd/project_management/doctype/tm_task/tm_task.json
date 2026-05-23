@@ -1,0 +1,252 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "TASK.-.MM.-.YY.-.#####",
+ "creation": "2026-05-16 17:21:54.137921",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "full_name",
+  "mobile_number",
+  "recurrence",
+  "time_in_hours",
+  "expected_date",
+  "assign_to",
+  "title__task",
+  "task_category",
+  "from_department",
+  "to_department",
+  "due_date",
+  "priorit",
+  "attachment",
+  "project",
+  "status",
+  "company",
+  "vendor",
+  "need_notification",
+  "description",
+  "sub_task",
+  "dependencies",
+  "total_working_hours",
+  "timesheet_table",
+  "printing_required",
+  "lft",
+  "rgt",
+  "is_group",
+  "old_parent",
+  "parent_tm_task",
+  "it_task_category"
+ ],
+ "fields": [
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Full Name"
+  },
+  {
+   "fieldname": "mobile_number",
+   "fieldtype": "Data",
+   "label": "Mobile Number"
+  },
+  {
+   "fieldname": "recurrence",
+   "fieldtype": "Select",
+   "label": "Recurrence",
+   "options": "Daily\nWeekly\nMonthly\nYearly"
+  },
+  {
+   "fieldname": "time_in_hours",
+   "fieldtype": "Duration",
+   "label": "Time in Hours"
+  },
+  {
+   "fieldname": "expected_date",
+   "fieldtype": "Date",
+   "label": "Expected Date"
+  },
+  {
+   "fieldname": "assign_to",
+   "fieldtype": "Table MultiSelect",
+   "label": "Assign To",
+   "options": "TM Assign User"
+  },
+  {
+   "fieldname": "title__task",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title / Task",
+   "reqd": 1
+  },
+  {
+   "fieldname": "task_category",
+   "fieldtype": "Link",
+   "label": "Task Category",
+   "options": "TM Task Category"
+  },
+  {
+   "fieldname": "from_department",
+   "fieldtype": "Link",
+   "label": "From Department",
+   "options": "TM From Department"
+  },
+  {
+   "fieldname": "to_department",
+   "fieldtype": "Link",
+   "label": " To Department",
+   "options": "TM Departments"
+  },
+  {
+   "fieldname": "due_date",
+   "fieldtype": "Date",
+   "label": "Due Date"
+  },
+  {
+   "fieldname": "priorit",
+   "fieldtype": "Select",
+   "label": "Priorit",
+   "options": "P4\nP3\nP2\nP1"
+  },
+  {
+   "fieldname": "attachment",
+   "fieldtype": "Attach",
+   "label": "Attachment"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "TM Projects"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Not Started\nAcknowledged\nEditing\nUnder Review\nPrinting\nBilling\nCompleted\nClosed\nWorking On\nHOLD\nHold\nPlanned\nApproval & review\nOrdered\nReplacement\nRepair\nReceived\nIT asset entry\nIssue/Install\nERP asset entry\nCancelled\nRecorded"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "vendor",
+   "fieldtype": "Select",
+   "label": "Vendor",
+   "options": "\nDeep Photo Lamination\nShreeji Enterprise\nShree Ram Printers\nKrishna Multiprint\nKrishna Sign\nPixeltec\nD D Designer\nUniversal\nRaghavendra Enterprise\nDeep Lamination\nYani Printers"
+  },
+  {
+   "default": "0",
+   "fieldname": "need_notification",
+   "fieldtype": "Check",
+   "label": "Need Notification"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description "
+  },
+  {
+   "fieldname": "sub_task",
+   "fieldtype": "Table",
+   "label": "Sub Task",
+   "options": "TM Parent Task Table"
+  },
+  {
+   "fieldname": "dependencies",
+   "fieldtype": "Table",
+   "label": "Dependencies",
+   "options": "TM Parent Task Table"
+  },
+  {
+   "fieldname": "total_working_hours",
+   "fieldtype": "Float",
+   "label": "Total Working Hours",
+   "precision": "2"
+  },
+  {
+   "fieldname": "timesheet_table",
+   "fieldtype": "Table",
+   "label": "Timesheet Table",
+   "options": "TM Timesheet Table"
+  },
+  {
+   "fieldname": "printing_required",
+   "fieldtype": "Select",
+   "label": "Printing Required",
+   "options": "No\nYes"
+  },
+  {
+   "fieldname": "lft",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Left",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "rgt",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Right",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_group",
+   "fieldtype": "Check",
+   "label": "Is Group"
+  },
+  {
+   "fieldname": "old_parent",
+   "fieldtype": "Link",
+   "label": "Old Parent",
+   "options": "TM Task"
+  },
+  {
+   "fieldname": "parent_tm_task",
+   "fieldtype": "Link",
+   "ignore_user_permissions": 1,
+   "label": "Parent TM Task",
+   "options": "TM Task"
+  },
+  {
+   "fieldname": "it_task_category",
+   "fieldtype": "Data",
+   "label": "IT Task Category"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_tree": 1,
+ "links": [],
+ "modified": "2026-05-22 11:03:58.295145",
+ "modified_by": "Administrator",
+ "module": "Project Management",
+ "name": "TM Task",
+ "naming_rule": "Expression",
+ "nsm_parent_field": "parent_tm_task",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

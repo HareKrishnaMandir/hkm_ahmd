@@ -1,0 +1,82 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-05-18 12:01:34.107998",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tasks",
+  "status",
+  "updated_status",
+  "assigned_to",
+  "updated_assigned_to",
+  "updated_due_date",
+  "activity_type",
+  "updated_activity_type",
+  "hours"
+ ],
+ "fields": [
+  {
+   "fieldname": "tasks",
+   "fieldtype": "Link",
+   "label": "Tasks",
+   "options": "Tasks"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "label": "Status"
+  },
+  {
+   "fieldname": "updated_status",
+   "fieldtype": "Data",
+   "label": "Updated Status"
+  },
+  {
+   "fieldname": "assigned_to",
+   "fieldtype": "Data",
+   "label": "Assigned To"
+  },
+  {
+   "fieldname": "updated_assigned_to",
+   "fieldtype": "Data",
+   "label": "Updated Assigned To"
+  },
+  {
+   "fieldname": "updated_due_date",
+   "fieldtype": "Date",
+   "label": "Updated Due Date"
+  },
+  {
+   "fieldname": "activity_type",
+   "fieldtype": "Data",
+   "label": "Activity Type"
+  },
+  {
+   "fieldname": "updated_activity_type",
+   "fieldtype": "Data",
+   "label": "Updated Activity Type"
+  },
+  {
+   "fieldname": "hours",
+   "fieldtype": "Float",
+   "label": "Hours"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-05-18 12:26:03.599627",
+ "modified_by": "Administrator",
+ "module": "Project Management",
+ "name": "TM Task Snapshot Table",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
