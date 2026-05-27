@@ -18,7 +18,8 @@
   "extra_items",
   "remarks",
   "subscription_reference",
-  "shift"
+  "shift",
+  "invoice_pending"
  ],
  "fields": [
   {
@@ -100,13 +101,19 @@
    "fieldtype": "Select",
    "label": "Shift",
    "options": "Morning\nEvening"
+  },
+  {
+   "default": "0",
+   "fieldname": "invoice_pending",
+   "fieldtype": "Check",
+   "label": "Invoice Pending"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-04 14:22:16.084168",
- "modified_by": "yashsmk003@gmail.com",
+ "modified": "2026-05-27 17:55:37.919568",
+ "modified_by": "Administrator",
  "module": "AMD Dairy Management",
  "name": "AMD Orders",
  "naming_rule": "Expression",
