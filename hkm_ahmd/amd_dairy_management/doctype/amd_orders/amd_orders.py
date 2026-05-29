@@ -785,14 +785,10 @@ class AMDOrders(Document):
 
         # Safety check: if Customer is Manually Billing, do not create invoice
         if is_customer_manual_billing(self.customer):
-            if has_field("AMD Orders", "invoice_pending"):
-                frappe.db.set_value("AMD Orders", self.name, "invoice_pending", 1)
-
             frappe.logger().info(
                 f"[MANUAL-BILLING-SKIP] {self.name} customer={self.customer} → Customer is Manually Billing. Auto invoice skipped."
             )
             return
-
         source = (self.order_source or "").strip().lower()
 
         # Instant invoice ONLY for App orders OR customers with BILLING TYPE = Daily
@@ -1434,9 +1430,6 @@ def create_sales_invoice_from_amd_order(order_name):
 
     # Do not create invoice if Customer is Manually Billing
     if is_customer_manual_billing(order.customer):
-        if has_field("AMD Orders", "invoice_pending"):
-            frappe.db.set_value("AMD Orders", order.name, "invoice_pending", 1)
-
         frappe.logger().info(
             f"[MANUAL-BILLING-SKIP] {order.name}: Customer {order.customer} is Manually Billing. Sales Invoice not created."
         )
